@@ -1,0 +1,40 @@
+plugins {
+    id 'idea'
+    id 'java'
+    id 'org.springframework.boot' version '3.0.5'
+    id 'io.spring.dependency-management' version '1.1.0'
+    id 'com.diffplug.spotless' version '6.18.0'
+    id 'org.springdoc.openapi-gradle-plugin' version '1.6.0'
+}
+
+group = 'com.example'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '17'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    // Spring Modulithを使えないかな
+    // https://docs.spring.io/spring-modulith/docs/current-SNAPSHOT/reference/html/
+    implementation project(':campaign')
+
+    implementation('org.springframework.boot:spring-boot-starter-web')
+    implementation('org.springframework.boot:spring-boot-starter-actuator')
+
+    implementation('org.springdoc:springdoc-openapi-starter-webmvc-ui:2.1.0')
+
+    testImplementation('com.tngtech.archunit:archunit-junit5:1.0.1')
+}
+
+spotless {
+    java {
+        target 'src/**/*.java'
+        googleJavaFormat()
+    }
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}
