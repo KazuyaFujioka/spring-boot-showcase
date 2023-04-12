@@ -6,14 +6,9 @@ import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
-import java.nio.charset.StandardCharsets;
-import org.springframework.boot.autoconfigure.http.HttpMessageConverters;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
-import org.springframework.http.converter.HttpMessageConverter;
-import org.springframework.http.converter.StringHttpMessageConverter;
-import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Configuration
@@ -32,15 +27,5 @@ class WebConfiguration implements WebMvcConfigurer {
     objectMapper.registerModule(new JavaTimeModule());
 
     return objectMapper;
-  }
-
-  @Bean
-  HttpMessageConverters customConverters() {
-    HttpMessageConverter<?> stringHttpMessageConverter =
-        new StringHttpMessageConverter(StandardCharsets.UTF_8);
-    HttpMessageConverter<?> mappingJackson2HttpMessageConverter =
-        new MappingJackson2HttpMessageConverter(objectMapper());
-    return new HttpMessageConverters(
-        stringHttpMessageConverter, mappingJackson2HttpMessageConverter);
   }
 }

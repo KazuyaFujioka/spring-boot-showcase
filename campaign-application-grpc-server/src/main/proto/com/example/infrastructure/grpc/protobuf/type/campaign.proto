@@ -1,0 +1,29 @@
+syntax = "proto3";
+
+package protobuf;
+option java_package = "com.example.infrastructure.grpc.protobuf.type";
+option java_multiple_files = true;
+option objc_class_prefix = "example";
+
+import "google/protobuf/wrappers.proto";
+import "google/protobuf/timestamp.proto";
+
+message Campaigns {
+  repeated Campaign campaigns = 1;
+}
+
+message Campaign {
+  google.protobuf.StringValue title = 1;
+  Period period= 2;
+  google.protobuf.StringValue number = 3;
+}
+
+message Period {
+  google.protobuf.Timestamp start = 1;
+  google.protobuf.Timestamp end = 2;
+}
+
+message Number {
+  google.protobuf.StringValue value = 1;
+}
+

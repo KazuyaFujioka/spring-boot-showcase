@@ -29,7 +29,7 @@ class CampaignDataSource implements CampaignRepository {
     Optional<Campaign> campaign =
         campaigns.stream().filter(c -> c.number().equals(number)).findFirst();
     if (campaign.isPresent()) return campaign.get();
-    String message = String.format("キャンペーンが存在しません(管理番号:%s)", number);
+    String message = String.format("キャンペーンが存在しません(問い合わせ管理番号:%s)", number);
     throw new ResourceNotFoundException(message);
   }
 

@@ -1,15 +1,11 @@
 package com.example.domain.model;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 /** キャンペーン */
 public class Campaign {
 
-  @JsonProperty Title title;
-
-  @JsonProperty Period period;
-
-  @JsonProperty Number number;
+  Title title;
+  Period period;
+  Number number;
 
   Campaign(Title title, Period period, Number number) {
     this.title = title;

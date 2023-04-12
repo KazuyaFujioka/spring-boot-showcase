@@ -9,6 +9,7 @@ import com.example.domain.model.Campaigns;
 import com.example.domain.model.Number;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.enums.ParameterIn;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
@@ -56,7 +57,9 @@ class CampaignController {
       operationId = "findCampaign",
       summary = "キャンペーンを取得",
       description = "キャンペーンを取得する",
-      parameters = {@Parameter(name = "number", description = "管理番号", required = true)},
+      parameters = {
+        @Parameter(name = "number", in = ParameterIn.PATH, description = "管理番号", required = true)
+      },
       responses = {
         @ApiResponse(
             responseCode = Success.code,

@@ -1,22 +1,27 @@
 package com.example.domain.model;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
+import java.time.ZoneOffset;
 
 /** キャンペーン実施期間 */
 class Period {
 
-  @JsonProperty LocalDateTime start;
+  // gRPCとのマッピングがRFC3339でしかできないのでOffsetDateTimeを使用する
+  @JsonFormat(shape = JsonFormat.Shape.STRING)
+  OffsetDateTime start;
 
-  @JsonProperty LocalDateTime end;
+  @JsonFormat(shape = JsonFormat.Shape.STRING)
+  OffsetDateTime end;
 
   Period(LocalDateTime start, LocalDateTime end) {
-    this.start = start;
-    this.end = end;
+    this.start = OffsetDateTime.of(start, ZoneOffset.UTC);
+    this.end = OffsetDateTime.of(end, ZoneOffset.UTC);
   }
 
   Status toStatus() {
-    LocalDateTime current = LocalDateTime.now();
+    OffsetDateTime current = OffsetDateTime.of(LocalDateTime.now(), ZoneOffset.UTC);
     if (start.isAfter(current)) return Status.実施前;
     if (end.isBefore(current)) return Status.終了;
     return Status.実施中;

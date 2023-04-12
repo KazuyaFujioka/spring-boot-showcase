@@ -1,6 +1,6 @@
 spring:
   application:
-    name: campaign-application-server
+    name: grpc-application-server
   mvc:
     throw-exception-if-no-handler-found: true
     format:
@@ -10,7 +10,7 @@ spring:
       add-mappings: false
 
 server:
-  port: 8080
+  port: 8081
   shutdown: graceful
   compression:
     enabled: true
@@ -24,10 +24,8 @@ management:
       probes:
         enabled: true
 
-springdoc:
-  api-docs:
-    enabled: false
-  swagger-ui:
-    enabled: false
-  packagesToScan: com.example.endpoint
-  pathsToMatch: /v1/**
+grpc:
+  security:
+    auth:
+      enabled: false
+  shutdownGrace: 30
