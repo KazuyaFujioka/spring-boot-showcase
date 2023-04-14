@@ -16,8 +16,8 @@ class CampaignServiceImpl extends CampaignServiceGrpc.CampaignServiceImplBase {
 
   CampaignService campaignService;
 
-  CampaignModelAdaptor campaignModelAdaptor;
-  CampaignGrpcAdaptor campaignGrpcAdaptor;
+  CampaignModelConverter campaignModelConverter;
+  CampaignGrpcConverter campaignGrpcConverter;
 
   @Override
   public void findOngoingCampaign(
@@ -28,7 +28,7 @@ class CampaignServiceImpl extends CampaignServiceGrpc.CampaignServiceImplBase {
     Campaigns campaigns = campaignService.findOngoingCampaigns();
 
     com.example.infrastructure.grpc.protobuf.type.Campaigns gRPCCampaigns =
-        campaignGrpcAdaptor.convertGrpcCampaigns(campaigns);
+        campaignGrpcConverter.convertGrpcCampaigns(campaigns);
 
     responseObserver.onNext(gRPCCampaigns);
     responseObserver.onCompleted();
@@ -40,11 +40,11 @@ class CampaignServiceImpl extends CampaignServiceGrpc.CampaignServiceImplBase {
       StreamObserver<com.example.infrastructure.grpc.protobuf.type.Campaign> responseObserver) {
     LOG.debug("find campaign");
 
-    com.example.domain.model.Number number = campaignModelAdaptor.convertToModelNumber(request);
+    com.example.domain.model.Number number = campaignModelConverter.convertToModelNumber(request);
     Campaign campaign = campaignService.findCampaign(number);
 
     com.example.infrastructure.grpc.protobuf.type.Campaign gRPCCampaign =
-        campaignGrpcAdaptor.convertGrpcCampaign(campaign);
+        campaignGrpcConverter.convertGrpcCampaign(campaign);
 
     responseObserver.onNext(gRPCCampaign);
     responseObserver.onCompleted();
@@ -52,10 +52,10 @@ class CampaignServiceImpl extends CampaignServiceGrpc.CampaignServiceImplBase {
 
   CampaignServiceImpl(
       CampaignService campaignService,
-      CampaignModelAdaptor campaignModelAdaptor,
-      CampaignGrpcAdaptor campaignGrpcAdaptor) {
+      CampaignModelConverter campaignModelConverter,
+      CampaignGrpcConverter campaignGrpcConverter) {
     this.campaignService = campaignService;
-    this.campaignModelAdaptor = campaignModelAdaptor;
-    this.campaignGrpcAdaptor = campaignGrpcAdaptor;
+    this.campaignModelConverter = campaignModelConverter;
+    this.campaignGrpcConverter = campaignGrpcConverter;
   }
 }

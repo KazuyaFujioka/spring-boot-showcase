@@ -9,7 +9,7 @@ import com.google.protobuf.util.JsonFormat;
 import org.springframework.stereotype.Component;
 
 @Component
-class CampaignGrpcAdaptor {
+class CampaignGrpcConverter {
 
   ObjectMapper objectMapper;
 
@@ -37,7 +37,7 @@ class CampaignGrpcAdaptor {
     }
   }
 
-  CampaignGrpcAdaptor(ObjectMapper objectMapper) {
+  CampaignGrpcConverter(ObjectMapper objectMapper) {
     this.objectMapper = objectMapper;
   }
 }
