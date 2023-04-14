@@ -36,3 +36,5 @@ out/
 
 ### VS Code ###
 .vscode/
+
+/campaign-application-grpc-server/docs/proto-document.html
