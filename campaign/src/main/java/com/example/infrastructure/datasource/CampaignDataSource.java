@@ -9,6 +9,7 @@ import com.example.domain.policy.ResourceNotFoundException;
 import jakarta.annotation.PostConstruct;
 import java.time.LocalDateTime;
 import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.Optional;
 import java.util.Set;
 import org.springframework.stereotype.Repository;
@@ -38,15 +39,15 @@ class CampaignDataSource implements CampaignRepository {
     Campaign ongoingCampaign1 =
         CampaignFactory.create(
             "ボーナスキャンペーン",
-            LocalDateTime.now(),
-            LocalDateTime.now().plusMonths(1),
+            LocalDateTime.of(2023, 4, 1, 18, 30, 0),
+            LocalDateTime.of(9999, 12, 31, 23, 59, 59),
             "0nss8Qp2du2cSWT");
 
     Campaign ongoingCampaign2 =
         CampaignFactory.create(
             "お友達紹介キャンペーン",
-            LocalDateTime.now(),
-            LocalDateTime.now().plusYears(1),
+            LocalDateTime.of(2023, 4, 1, 18, 30, 0),
+            LocalDateTime.of(9999, 12, 31, 23, 59, 59),
             "dOY0aXcFv3grfpT");
 
     Campaign closedCampaign =
@@ -56,7 +57,7 @@ class CampaignDataSource implements CampaignRepository {
             LocalDateTime.of(2023, 2, 28, 23, 59, 59),
             "wJ6PmEWbwSvxKvG");
 
-    ongoingCampaigns = new HashSet<>();
+    ongoingCampaigns = new LinkedHashSet<>();
     ongoingCampaigns.add(ongoingCampaign1);
     ongoingCampaigns.add(ongoingCampaign2);
 

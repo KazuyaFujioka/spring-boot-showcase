@@ -1,0 +1,20 @@
+{
+  "campaigns": [
+    {
+      "title": "ボーナスキャンペーン",
+      "period": {
+        "start": "2023-04-01T18:30:00Z",
+        "end": "9999-12-31T23:59:59Z"
+      },
+      "number": "0nss8Qp2du2cSWT"
+    },
+    {
+      "title": "お友達紹介キャンペーン",
+      "period": {
+        "start": "2023-04-01T18:30:00Z",
+        "end": "9999-12-31T23:59:59Z"
+      },
+      "number": "dOY0aXcFv3grfpT"
+    }
+  ]
+}
