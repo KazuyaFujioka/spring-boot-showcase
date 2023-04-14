@@ -9,7 +9,7 @@ import com.google.protobuf.util.JsonFormat;
 import org.springframework.stereotype.Component;
 
 @Component
-class CampaignModelAdaptor {
+class CampaignModelConverter {
 
   ObjectMapper objectMapper;
 
@@ -28,7 +28,7 @@ class CampaignModelAdaptor {
     Number number;
   }
 
-  CampaignModelAdaptor(ObjectMapper objectMapper) {
+  CampaignModelConverter(ObjectMapper objectMapper) {
     this.objectMapper = objectMapper;
   }
 }
