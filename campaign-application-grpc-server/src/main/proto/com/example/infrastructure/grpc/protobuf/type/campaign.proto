@@ -8,22 +8,39 @@ option objc_class_prefix = "example";
 import "google/protobuf/wrappers.proto";
 import "google/protobuf/timestamp.proto";
 
+/**
+キャンペーン一覧
+ */
 message Campaigns {
+  /** キャンペーン一覧 */
   repeated Campaign campaigns = 1;
 }
 
+/**
+キャンペーン
+ */
 message Campaign {
+  /** キャンペーン名 */
   google.protobuf.StringValue title = 1;
+  /** キャンペーン実施期間 */
   Period period= 2;
+  /** 管理番号 */
   google.protobuf.StringValue number = 3;
 }
 
+/**
+キャンペーン実施期間
+ */
 message Period {
+  /** 開始日時 */
   google.protobuf.Timestamp start = 1;
+  /** 終了日時 */
   google.protobuf.Timestamp end = 2;
 }
 
+/**
+管理番号
+ */
 message Number {
   google.protobuf.StringValue value = 1;
 }
-
