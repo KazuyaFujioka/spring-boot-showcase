@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: application-grpc-client
+
+grpc:
+  enabled: false
+  security:
+    auth:
+      enabled: false

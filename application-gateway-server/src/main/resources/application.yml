@@ -1,0 +1,36 @@
+spring:
+  application:
+    name: application-gateway-server
+
+  cloud:
+    gateway:
+      # FIXME spring cloud gatewayを使う為にはSSL/TLS設定が必須
+      httpclient:
+        ssl:
+          use-insecure-trust-manager: true
+      routes:
+        - id: find-ongoing-campaign-rest
+          uri: ${FIND_ONGOING_CAMPAIGN_REST}
+          predicates:
+            - Path=/v1/campaign/ongoing
+        - id: find-ongoing-campaign-grpc
+          uri: ${FIND_ONGOING_CAMPAIGN_gRPC}
+          predicates:
+            - Path=/protobuf.CampaignService/findOngoingCampaign
+          filters:
+            - AddResponseHeader=X-Request-header, header-value
+
+server:
+  port: 8080
+  # FIXME spring cloud gatewayを使う為にはSSL/TLS設定が必須
+  http2:
+    enabled: true
+  ssl:
+    key-store-type: PKCS12
+    key-store: classpath:keystore.p12
+    key-store-password: password
+    key-password: password
+    enabled: true
+  shutdown: graceful
+  compression:
+    enabled: true

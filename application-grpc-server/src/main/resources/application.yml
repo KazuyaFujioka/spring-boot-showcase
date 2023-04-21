@@ -1,0 +1,34 @@
+spring:
+  application:
+    name: grpc-application-server
+  mvc:
+    throw-exception-if-no-handler-found: true
+    format:
+      date: iso
+  web:
+    resources:
+      add-mappings: false
+
+server:
+  port: 8081
+  shutdown: graceful
+  compression:
+    enabled: true
+
+management:
+  endpoints:
+    enabled-by-default: false
+  endpoint:
+    health:
+      enabled: true
+      probes:
+        enabled: true
+
+grpc:
+  enableReflection: true
+  enabled: true
+  # FIXME spring cloud gatewayを使う為にはSSL/TLS設定が必須
+  security:
+    cert-chain: ${GRPC_SECURITY_CERT_CHAIN}
+    private-key: ${GRPC_SECURITY_PRIVATE_KEY}
+  shutdownGrace: 30

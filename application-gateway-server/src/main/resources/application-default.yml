@@ -1,0 +1,19 @@
+logging:
+  level:
+    com:
+      example: debug
+
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: find-ongoing-campaign-rest
+          uri: http://localhost:8082
+          predicates:
+            - Path=/v1/campaign/ongoing
+        - id: find-ongoing-campaign-grpc
+          uri: https://localhost:6565
+          predicates:
+            - Path=/protobuf.CampaignService/findOngoingCampaign
+          filters:
+            - AddResponseHeader=X-Request-header, header-value
