@@ -1,5 +1,7 @@
 rootProject.name = 'spring-boot-showcase'
 
+include ':application-gateway-server'
+include ':application-grpc-client'
+include ':application-grpc-server'
+include ':application-server'
 include ':campaign'
-include ':campaign-application-grpc-server'
-include ':campaign-application-server'

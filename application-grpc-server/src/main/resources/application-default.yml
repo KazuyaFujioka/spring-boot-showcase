@@ -1,0 +1,9 @@
+logging:
+  level:
+    com:
+      example: debug
+
+grpc:
+  security:
+    cert-chain: classpath:certificate.pem
+    private-key: classpath:cert.key
