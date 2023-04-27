@@ -1,7 +1,6 @@
 package com.example.endpoint;
 
 import com.example.domain.model.Number;
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.protobuf.InvalidProtocolBufferException;
@@ -16,16 +15,10 @@ class CampaignModelConverter {
   Number convertToModelNumber(com.example.infrastructure.grpc.protobuf.type.Number grpcNumber) {
     try {
       String json = JsonFormat.printer().print(grpcNumber);
-      NumberRequest request = objectMapper.readValue(json, NumberRequest.class);
-      return request.number;
+      return objectMapper.readValue(json, Number.class);
     } catch (InvalidProtocolBufferException | JsonProcessingException exception) {
       throw new RuntimeException(exception);
     }
-  }
-
-  private static class NumberRequest {
-    @JsonProperty("value")
-    Number number;
   }
 
   CampaignModelConverter(ObjectMapper objectMapper) {
