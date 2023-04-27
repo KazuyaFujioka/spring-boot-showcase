@@ -6,19 +6,10 @@ import java.time.OffsetDateTime;
 import java.time.ZoneOffset;
 
 /** キャンペーン実施期間 */
-class Period {
-
-  // gRPCとのマッピングがRFC3339でしかできないのでOffsetDateTimeを使用する
-  @JsonFormat(shape = JsonFormat.Shape.STRING)
-  OffsetDateTime start;
-
-  @JsonFormat(shape = JsonFormat.Shape.STRING)
-  OffsetDateTime end;
-
-  Period(LocalDateTime start, LocalDateTime end) {
-    this.start = OffsetDateTime.of(start, ZoneOffset.UTC);
-    this.end = OffsetDateTime.of(end, ZoneOffset.UTC);
-  }
+// gRPCとのマッピングがRFC3339でしかできないのでOffsetDateTimeを使用する
+record Period(
+    @JsonFormat(shape = JsonFormat.Shape.STRING) OffsetDateTime start,
+    @JsonFormat(shape = JsonFormat.Shape.STRING) OffsetDateTime end) {
 
   Status toStatus() {
     OffsetDateTime current = OffsetDateTime.of(LocalDateTime.now(), ZoneOffset.UTC);
@@ -31,6 +22,4 @@ class Period {
   public String toString() {
     return String.format("%s〜%s", start, end);
   }
-
-  Period() {}
 }

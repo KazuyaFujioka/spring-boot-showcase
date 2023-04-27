@@ -26,7 +26,7 @@ class PeriodTest {
     LocalDateTime start = LocalDateTime.of(2023, 2, 1, 0, 0, 0, 0);
     LocalDateTime end = LocalDateTime.of(2023, 12, 31, 23, 59, 59, 999);
 
-    Period period = new Period(start, end);
+    Period period = PeriodFactory.create(start, end);
 
     Status expect = Status.実施中;
     Assertions.assertEquals(expect, period.toStatus());
@@ -38,7 +38,7 @@ class PeriodTest {
     LocalDateTime start = LocalDateTime.of(2023, 2, 2, 0, 0, 0, 0);
     LocalDateTime end = LocalDateTime.of(2023, 12, 31, 23, 59, 59, 999);
 
-    Period period = new Period(start, end);
+    Period period = PeriodFactory.create(start, end);
 
     Status expect = Status.実施前;
     Assertions.assertEquals(expect, period.toStatus());
@@ -50,7 +50,7 @@ class PeriodTest {
     LocalDateTime start = LocalDateTime.of(2022, 2, 1, 0, 0, 0, 0);
     LocalDateTime end = LocalDateTime.of(2022, 12, 31, 23, 59, 59, 999);
 
-    Period period = new Period(start, end);
+    Period period = PeriodFactory.create(start, end);
 
     Status expect = Status.終了;
     Assertions.assertEquals(expect, period.toStatus());

@@ -18,13 +18,13 @@ class ExceptionAdvice {
   @ResponseStatus(HttpStatus.NOT_FOUND)
   ResponseEntity<HttpStatus> notFound(Exception exception) {
     LOG.warn(exception.getMessage());
-    return new ResponseEntity(HttpStatus.NOT_FOUND);
+    return ResponseEntity.notFound().build();
   }
 
   @ExceptionHandler({Exception.class})
   @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
   ResponseEntity<HttpStatus> internalServerError(Exception exception) {
     LOG.error(exception.getMessage(), exception);
-    return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
+    return ResponseEntity.internalServerError().build();
   }
 }
