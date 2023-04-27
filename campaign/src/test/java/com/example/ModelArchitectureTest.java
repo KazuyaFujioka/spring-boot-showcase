@@ -28,7 +28,7 @@ class ModelArchitectureTest {
           .and()
           .resideInAPackage(LayeredArchitectureTest.modelPackage)
           .should(
-              new ArchCondition<JavaClass>("have a default constructor without parameters") {
+              new ArchCondition<>("have a default constructor without parameters") {
                 @Override
                 public void check(JavaClass javaClass, ConditionEvents events) {
                   if (javaClass.isRecord()) return; // recordは除外
@@ -57,7 +57,7 @@ class ModelArchitectureTest {
           .and()
           .resideInAPackage(LayeredArchitectureTest.modelPackage)
           .should(
-              new ArchCondition<JavaClass>("Override toString") {
+              new ArchCondition<>("Override toString") {
                 @Override
                 public void check(JavaClass javaClass, ConditionEvents events) {
                   boolean satisfied =

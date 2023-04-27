@@ -68,9 +68,7 @@ class CampaignServiceImplTest {
     StatusRuntimeException exception =
         Assertions.assertThrows(
             StatusRuntimeException.class,
-            () -> {
-              stub.findCampaign(Number.newBuilder().setValue(StringValue.of("123")).build());
-            });
+            () -> stub.findCampaign(Number.newBuilder().setValue(StringValue.of("123")).build()));
 
     Status expect = Status.NOT_FOUND;
     Assertions.assertEquals(expect.getCode(), exception.getStatus().getCode());
