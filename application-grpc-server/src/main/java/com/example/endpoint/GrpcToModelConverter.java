@@ -12,10 +12,10 @@ class GrpcToModelConverter {
 
   ObjectMapper objectMapper;
 
-  <T> T convert(MessageOrBuilder messageOrBuilder, Class<T> converterClass) {
+  <T> T convert(MessageOrBuilder grpcClass, Class<T> convertClass) {
     try {
-      String json = JsonFormat.printer().print(messageOrBuilder);
-      return objectMapper.readValue(json, converterClass);
+      String json = JsonFormat.printer().print(grpcClass);
+      return objectMapper.readValue(json, convertClass);
     } catch (InvalidProtocolBufferException | JsonProcessingException exception) {
       throw new RuntimeException(exception);
     }
