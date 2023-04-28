@@ -17,7 +17,7 @@ class CampaignServiceImpl extends CampaignServiceGrpc.CampaignServiceImplBase {
   CampaignService campaignService;
 
   GrpcToModelConverter grpcToModelConverter;
-  CampaignGrpcConverter campaignGrpcConverter;
+  ModelToGrpcConverter modelToGrpcConverter;
 
   @Override
   public void findOngoingCampaign(
@@ -27,10 +27,11 @@ class CampaignServiceImpl extends CampaignServiceGrpc.CampaignServiceImplBase {
 
     Campaigns campaigns = campaignService.findOngoingCampaigns();
 
-    com.example.infrastructure.grpc.protobuf.type.Campaigns gRPCCampaigns =
-        campaignGrpcConverter.convertGrpcCampaigns(campaigns);
+    com.example.infrastructure.grpc.protobuf.type.Campaigns.Builder gRPCCampaignsBuilder =
+        com.example.infrastructure.grpc.protobuf.type.Campaigns.newBuilder();
+    modelToGrpcConverter.convert(campaigns, gRPCCampaignsBuilder);
 
-    responseObserver.onNext(gRPCCampaigns);
+    responseObserver.onNext(gRPCCampaignsBuilder.build());
     responseObserver.onCompleted();
   }
 
@@ -44,19 +45,20 @@ class CampaignServiceImpl extends CampaignServiceGrpc.CampaignServiceImplBase {
         grpcToModelConverter.convert(request, com.example.domain.model.Number.class);
     Campaign campaign = campaignService.findCampaign(number);
 
-    com.example.infrastructure.grpc.protobuf.type.Campaign gRPCCampaign =
-        campaignGrpcConverter.convertGrpcCampaign(campaign);
+    com.example.infrastructure.grpc.protobuf.type.Campaign.Builder gRPCCampaignBuilder =
+        com.example.infrastructure.grpc.protobuf.type.Campaign.newBuilder();
+    modelToGrpcConverter.convert(campaign, gRPCCampaignBuilder);
 
-    responseObserver.onNext(gRPCCampaign);
+    responseObserver.onNext(gRPCCampaignBuilder.build());
     responseObserver.onCompleted();
   }
 
   CampaignServiceImpl(
       CampaignService campaignService,
       GrpcToModelConverter grpcToModelConverter,
-      CampaignGrpcConverter campaignGrpcConverter) {
+      ModelToGrpcConverter modelToGrpcConverter) {
     this.campaignService = campaignService;
     this.grpcToModelConverter = grpcToModelConverter;
-    this.campaignGrpcConverter = campaignGrpcConverter;
+    this.modelToGrpcConverter = modelToGrpcConverter;
   }
 }
