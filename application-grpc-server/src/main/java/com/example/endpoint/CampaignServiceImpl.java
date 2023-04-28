@@ -16,7 +16,7 @@ class CampaignServiceImpl extends CampaignServiceGrpc.CampaignServiceImplBase {
 
   CampaignService campaignService;
 
-  CampaignModelConverter campaignModelConverter;
+  GrpcToModelConverter grpcToModelConverter;
   CampaignGrpcConverter campaignGrpcConverter;
 
   @Override
@@ -40,7 +40,8 @@ class CampaignServiceImpl extends CampaignServiceGrpc.CampaignServiceImplBase {
       StreamObserver<com.example.infrastructure.grpc.protobuf.type.Campaign> responseObserver) {
     LOG.debug("find campaign");
 
-    com.example.domain.model.Number number = campaignModelConverter.convertToModelNumber(request);
+    com.example.domain.model.Number number =
+        grpcToModelConverter.convert(request, com.example.domain.model.Number.class);
     Campaign campaign = campaignService.findCampaign(number);
 
     com.example.infrastructure.grpc.protobuf.type.Campaign gRPCCampaign =
@@ -52,10 +53,10 @@ class CampaignServiceImpl extends CampaignServiceGrpc.CampaignServiceImplBase {
 
   CampaignServiceImpl(
       CampaignService campaignService,
-      CampaignModelConverter campaignModelConverter,
+      GrpcToModelConverter grpcToModelConverter,
       CampaignGrpcConverter campaignGrpcConverter) {
     this.campaignService = campaignService;
-    this.campaignModelConverter = campaignModelConverter;
+    this.grpcToModelConverter = grpcToModelConverter;
     this.campaignGrpcConverter = campaignGrpcConverter;
   }
 }
