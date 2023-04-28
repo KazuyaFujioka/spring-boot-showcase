@@ -1,27 +1,27 @@
 package com.example.endpoint;
 
-import com.example.domain.model.Number;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.protobuf.InvalidProtocolBufferException;
+import com.google.protobuf.Message;
 import com.google.protobuf.util.JsonFormat;
 import org.springframework.stereotype.Component;
 
 @Component
-class CampaignModelConverter {
+class ModelToGrpcConverter {
 
   ObjectMapper objectMapper;
 
-  Number convertToModelNumber(com.example.infrastructure.grpc.protobuf.type.Number grpcNumber) {
+  void convert(Object modelClass, Message.Builder convertClass) {
     try {
-      String json = JsonFormat.printer().print(grpcNumber);
-      return objectMapper.readValue(json, Number.class);
-    } catch (InvalidProtocolBufferException | JsonProcessingException exception) {
+      String json = objectMapper.writeValueAsString(modelClass);
+      JsonFormat.parser().ignoringUnknownFields().merge(json, convertClass);
+    } catch (JsonProcessingException | InvalidProtocolBufferException exception) {
       throw new RuntimeException(exception);
     }
   }
 
-  CampaignModelConverter(ObjectMapper objectMapper) {
+  ModelToGrpcConverter(ObjectMapper objectMapper) {
     this.objectMapper = objectMapper;
   }
 }
