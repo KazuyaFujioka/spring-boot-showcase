@@ -13,10 +13,20 @@ spring:
           uri: ${FIND_ONGOING_CAMPAIGN_REST}
           predicates:
             - Path=/v1/campaign/ongoing
+        - id: find-campaign-rest
+          uri: ${FIND_ONGOING_CAMPAIGN_REST}
+          predicates:
+            - Path=/v1/campaign/**
         - id: find-ongoing-campaign-grpc
           uri: ${FIND_ONGOING_CAMPAIGN_gRPC}
           predicates:
             - Path=/protobuf.CampaignService/findOngoingCampaign
+          filters:
+            - AddResponseHeader=X-Request-header, header-value
+        - id: find-campaign-grpc
+          uri: ${FIND_ONGOING_CAMPAIGN_gRPC}
+          predicates:
+            - Path=/protobuf.CampaignService/findCampaign
           filters:
             - AddResponseHeader=X-Request-header, header-value
 
