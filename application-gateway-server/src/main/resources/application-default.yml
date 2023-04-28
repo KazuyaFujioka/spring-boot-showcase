@@ -11,9 +11,19 @@ spring:
           uri: http://localhost:8082
           predicates:
             - Path=/v1/campaign/ongoing
+        - id: find-campaign-rest
+          uri: http://localhost:8082
+          predicates:
+            - Path=/v1/campaign/**
         - id: find-ongoing-campaign-grpc
           uri: https://localhost:6565
           predicates:
             - Path=/protobuf.CampaignService/findOngoingCampaign
+          filters:
+            - AddResponseHeader=X-Request-header, header-value
+        - id: find-campaign-grpc
+          uri: https://localhost:6565
+          predicates:
+            - Path=/protobuf.CampaignService/findCampaign
           filters:
             - AddResponseHeader=X-Request-header, header-value

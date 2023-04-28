@@ -3,7 +3,10 @@ package com.example;
 import static com.example.infrastructure.grpc.protobuf.service.CampaignServiceGrpc.CampaignServiceBlockingStub;
 
 import com.example.infrastructure.grpc.protobuf.service.CampaignServiceGrpc;
+import com.example.infrastructure.grpc.protobuf.type.Campaign;
 import com.example.infrastructure.grpc.protobuf.type.Campaigns;
+import com.example.infrastructure.grpc.protobuf.type.Number;
+import com.google.protobuf.StringValue;
 import io.grpc.ManagedChannel;
 import io.grpc.netty.shaded.io.grpc.netty.GrpcSslContexts;
 import io.grpc.netty.shaded.io.grpc.netty.NegotiationType;
@@ -41,7 +44,10 @@ public class ApplicationGrpcClient implements ApplicationRunner {
     CampaignServiceBlockingStub stub = CampaignServiceGrpc.newBlockingStub(channel);
 
     Campaigns campaigns = stub.findOngoingCampaign(com.google.protobuf.Empty.getDefaultInstance());
-
     LOG.info(campaigns.toString());
+
+    Campaign campaign =
+        stub.findCampaign(Number.newBuilder().setValue(StringValue.of("dOY0aXcFv3grfpT")).build());
+    LOG.info(campaign.toString());
   }
 }
