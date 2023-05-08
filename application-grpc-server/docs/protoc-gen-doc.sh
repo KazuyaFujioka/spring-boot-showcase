@@ -8,5 +8,5 @@ docker run --rm \
   pseudomuto/protoc-gen-doc \
   --doc_opt=html,proto-document.html \
   --proto_path=/protos/ \
-  com/example/infrastructure/grpc/protobuf/service/campaign_service.proto \
-  com/example/infrastructure/grpc/protobuf/type/campaign.proto
+  com/example/endpoint/grpc/protobuf/service/campaign_service.proto \
+  com/example/endpoint/grpc/protobuf/type/campaign.proto

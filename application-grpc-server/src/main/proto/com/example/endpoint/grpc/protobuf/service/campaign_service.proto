@@ -1,12 +1,12 @@
 syntax = "proto3";
 
 package protobuf;
-option java_package = "com.example.infrastructure.grpc.protobuf.service";
+option java_package = "com.example.endpoint.grpc.protobuf.service";
 option java_multiple_files = true;
 option objc_class_prefix = "example";
 
 import "google/protobuf/empty.proto";
-import "com/example/infrastructure/grpc/protobuf/type/campaign.proto";
+import "com/example/endpoint/grpc/protobuf/type/campaign.proto";
 
 service CampaignService {
   rpc findOngoingCampaign(google.protobuf.Empty) returns (Campaigns) {

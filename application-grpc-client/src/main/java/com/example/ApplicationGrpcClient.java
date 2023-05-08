@@ -1,11 +1,11 @@
 package com.example;
 
-import static com.example.infrastructure.grpc.protobuf.service.CampaignServiceGrpc.CampaignServiceBlockingStub;
+import static com.example.endpoint.grpc.protobuf.service.CampaignServiceGrpc.CampaignServiceBlockingStub;
 
-import com.example.infrastructure.grpc.protobuf.service.CampaignServiceGrpc;
-import com.example.infrastructure.grpc.protobuf.type.Campaign;
-import com.example.infrastructure.grpc.protobuf.type.Campaigns;
-import com.example.infrastructure.grpc.protobuf.type.Number;
+import com.example.endpoint.grpc.protobuf.service.CampaignServiceGrpc;
+import com.example.endpoint.grpc.protobuf.type.Campaign;
+import com.example.endpoint.grpc.protobuf.type.Campaigns;
+import com.example.endpoint.grpc.protobuf.type.Number;
 import com.google.protobuf.StringValue;
 import io.grpc.ManagedChannel;
 import io.grpc.netty.shaded.io.grpc.netty.GrpcSslContexts;

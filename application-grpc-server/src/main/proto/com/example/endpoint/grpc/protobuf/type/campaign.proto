@@ -1,7 +1,7 @@
 syntax = "proto3";
 
 package protobuf;
-option java_package = "com.example.infrastructure.grpc.protobuf.type";
+option java_package = "com.example.endpoint.grpc.protobuf.type";
 option java_multiple_files = true;
 option objc_class_prefix = "example";
 
