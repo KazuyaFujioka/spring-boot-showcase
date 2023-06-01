@@ -33,7 +33,7 @@ dependencies {
 configurations.all {
     resolutionStrategy.eachDependency { details ->
         if ("io.grpc".equalsIgnoreCase(details.requested.group)) {
-            details.useVersion "1.54.0"
+            details.useVersion "1.55.1"
         }
     }
 }
