@@ -44,3 +44,15 @@ server:
   shutdown: graceful
   compression:
     enabled: true
+
+management:
+  endpoints:
+    enabled-by-default: false
+  endpoint:
+    health:
+      enabled: true
+      probes:
+        enabled: true
+  tracing:
+    sampling:
+      probability: 1.0

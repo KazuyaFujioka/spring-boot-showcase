@@ -26,6 +26,9 @@ dependencies {
     implementation('io.github.lognet:grpc-spring-boot-starter')
     implementation('com.google.protobuf:protobuf-java-util:3.23.2')
 
+    implementation('io.micrometer:micrometer-tracing-bridge-otel')
+    implementation('io.opentelemetry:opentelemetry-exporter-zipkin')
+
     compileOnly('org.springframework.boot:spring-boot-devtools')
 
     testImplementation('org.springframework.boot:spring-boot-starter-test')
