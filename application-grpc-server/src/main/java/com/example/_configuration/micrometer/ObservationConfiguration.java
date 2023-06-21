@@ -1,0 +1,44 @@
+package com.example._configuration.micrometer;
+
+import io.micrometer.observation.Observation.Context;
+import io.micrometer.observation.ObservationPredicate;
+import io.micrometer.observation.ObservationView;
+import java.util.Objects;
+import java.util.Set;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.http.server.observation.ServerRequestObservationContext;
+
+// https://github.com/spring-projects/spring-boot/issues/34801
+@Configuration
+class ObservationConfiguration {
+
+  static final Set<String> ignores;
+
+  static {
+    ignores =
+        Set.of(
+            "/actuator/health",
+            "/actuator/health/liveness",
+            "/actuator/health/readiness",
+            "/favicon.ico");
+  }
+
+  @Bean
+  ObservationPredicate observationPredicateFiltering() {
+    return (name, context) -> {
+      Context root = getRoot(context);
+      System.out.println("///// call=" + root.getClass().getName());
+      if (root instanceof ServerRequestObservationContext serverContext) {
+        if (ignores.contains(serverContext.getCarrier().getRequestURI())) return false;
+      }
+      return true;
+    };
+  }
+
+  private Context getRoot(Context current) {
+    ObservationView parent = current.getParentObservation();
+    if (Objects.isNull(parent)) return current;
+    return getRoot((Context) parent.getContextView());
+  }
+}
