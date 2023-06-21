@@ -28,7 +28,6 @@ class ObservationConfiguration {
   ObservationPredicate observationPredicateFiltering() {
     return (name, context) -> {
       Context root = getRoot(context);
-      System.out.println("///// call=" + root.getClass().getName());
       if (root instanceof ServerRequestObservationContext serverContext) {
         if (ignores.contains(serverContext.getCarrier().getRequestURI())) return false;
       }
