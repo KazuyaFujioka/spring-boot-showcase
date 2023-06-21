@@ -1,5 +1,6 @@
 package com.example.endpoint;
 
+import com.example._configuration.micrometer.TraceServerInterceptor;
 import com.example.application.service.CampaignService;
 import com.example.domain.model.Campaign;
 import com.example.domain.model.Campaigns;
@@ -10,7 +11,7 @@ import org.lognet.springboot.grpc.GRpcService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-@GRpcService
+@GRpcService(interceptors = TraceServerInterceptor.class)
 class CampaignServiceImpl extends CampaignServiceGrpc.CampaignServiceImplBase {
 
   Logger LOG = LoggerFactory.getLogger(CampaignServiceImpl.class);

@@ -16,9 +16,14 @@ repositories {
 }
 
 dependencies {
-    implementation('org.springframework.boot:spring-boot-starter')
+    implementation('org.springframework.boot:spring-boot-starter-web')
+    implementation('org.springframework.boot:spring-boot-starter-actuator')
 
     implementation('io.github.lognet:grpc-spring-boot-starter')
+
+    implementation('io.micrometer:micrometer-tracing-bridge-otel')
+    implementation('io.opentelemetry:opentelemetry-exporter-zipkin')
+    implementation('io.zipkin.brave:brave-instrumentation-grpc')
 
     compileOnly('org.springframework.boot:spring-boot-devtools')
 
