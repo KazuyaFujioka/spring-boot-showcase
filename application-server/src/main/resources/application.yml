@@ -10,7 +10,6 @@ spring:
       add-mappings: false
 
 server:
-  port: 8082
   shutdown: graceful
   compression:
     enabled: true

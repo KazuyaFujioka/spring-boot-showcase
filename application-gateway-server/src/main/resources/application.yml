@@ -31,7 +31,6 @@ spring:
             - AddResponseHeader=X-Request-header, header-value
 
 server:
-  port: 8080
   # FIXME spring cloud gatewayを使う為にはSSL/TLS設定が必須
   http2:
     enabled: true
