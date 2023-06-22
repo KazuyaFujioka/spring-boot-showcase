@@ -1,6 +1,6 @@
 spring:
   application:
-    name: application-grpc-client
+    name: application-client
   main:
     web-application-type: none
 
@@ -16,3 +16,9 @@ grpc:
   security:
     auth:
       enabled: false
+
+external:
+  gateway-server:
+    schema: ${GATEWAY_SERVER_SCHEMA}
+    domain: ${GATEWAY_SERVER_DOMAIN}
+    port: ${GATEWAY_SERVER_PORT}

@@ -1,0 +1,10 @@
+logging:
+  level:
+    com:
+      example: debug
+
+external:
+  gateway-server:
+    schema: https
+    domain: localhost
+    port: 8080
