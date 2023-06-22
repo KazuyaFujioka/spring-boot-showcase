@@ -24,7 +24,8 @@ class WebClientConfiguration {
               .trustManager(InsecureTrustManagerFactory.INSTANCE)
               .build(); // FIXME localhost用
 
-      HttpClient httpClient = HttpClient.create().secure(option -> option.sslContext(sslContext));
+      HttpClient httpClient =
+          HttpClient.create().compress(true).secure(option -> option.sslContext(sslContext));
 
       return builder
           .baseUrl(gatewayServerProperties.toUrl())

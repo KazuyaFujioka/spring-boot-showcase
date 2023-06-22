@@ -35,10 +35,10 @@ server:
   http2:
     enabled: true
   ssl:
-    key-store-type: PKCS12
-    key-store: classpath:keystore.p12
-    key-store-password: password
-    key-password: password
+    key-store-type: ${GATEWAY_SSL_KEY_STORE_TYPE}
+    key-store: ${GATEWAY_SSL_KEY_STORE}
+    key-store-password: ${GATEWAY_SSL_KEY_STORE_PASSWORD}
+    key-password: ${GATEWAY_SSL_KEY_PASSWORD}
     enabled: true
   shutdown: graceful
   compression:
