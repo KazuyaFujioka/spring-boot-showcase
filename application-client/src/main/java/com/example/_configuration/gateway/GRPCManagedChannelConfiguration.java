@@ -10,12 +10,13 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-class ManagedChannelConfiguration {
+class GRPCManagedChannelConfiguration {
 
   @Bean
-  ManagedChannel managedChannel(GatewayServerProperties gatewayServerProperties) {
+  ManagedChannel managedChannel(
+      GRPCTraceClientInterceptor grpcTraceClientInterceptor,
+      GatewayServerProperties gatewayServerProperties) {
     try {
-      // FIXME このChannel生成だとTracingが伝播していかない
       return NettyChannelBuilder.forAddress(
               gatewayServerProperties.domain.value(), gatewayServerProperties.port.value())
           .useTransportSecurity()
@@ -24,6 +25,7 @@ class ManagedChannelConfiguration {
                   .trustManager(InsecureTrustManagerFactory.INSTANCE) // FIXME localhost用
                   .build())
           .negotiationType(NegotiationType.TLS)
+          .intercept(grpcTraceClientInterceptor)
           .build();
     } catch (SSLException exception) {
       throw new RuntimeException(exception);
