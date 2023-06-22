@@ -15,6 +15,7 @@ class ManagedChannelConfiguration {
   @Bean
   ManagedChannel managedChannel(GatewayServerProperties gatewayServerProperties) {
     try {
+      // FIXME このChannel生成だとTracingが伝播していかない
       return NettyChannelBuilder.forAddress(
               gatewayServerProperties.domain.value(), gatewayServerProperties.port.value())
           .useTransportSecurity()

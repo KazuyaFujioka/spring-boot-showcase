@@ -21,6 +21,7 @@ class ObservationConfiguration {
             "/actuator/health",
             "/actuator/health/liveness",
             "/actuator/health/readiness",
+            "/actuator/prometheus",
             "/favicon.ico");
   }
 
