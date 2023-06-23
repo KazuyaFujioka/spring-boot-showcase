@@ -8,5 +8,5 @@ logging:
 
 grpc:
   security:
-    cert-chain: classpath:certificate.pem
-    private-key: classpath:cert.key
+    cert-chain: classpath:server-cert.pem
+    private-key: classpath:server-key.pem

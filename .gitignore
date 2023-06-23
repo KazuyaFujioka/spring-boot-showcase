@@ -38,3 +38,6 @@ out/
 .vscode/
 
 /campaign-application-grpc-server/docs/proto-document.html
+/certificate/*.pem
+/certificate/*.srl
+/certificate/*.p12
