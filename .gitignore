@@ -41,3 +41,6 @@ out/
 /certificate/*.pem
 /certificate/*.srl
 /certificate/*.p12
+/application-grpc-server/src/main/resources/server-cert.pem
+/application-grpc-server/src/main/resources/server-key.pem
+/application-gateway-server/src/main/resources/client-cert.p12
