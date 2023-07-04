@@ -16,13 +16,7 @@ class ObservationConfiguration {
   static final Set<String> ignores;
 
   static {
-    ignores =
-        Set.of(
-            "/actuator/health",
-            "/actuator/health/liveness",
-            "/actuator/health/readiness",
-            "/actuator/prometheus",
-            "/favicon.ico");
+    ignores = Set.of("/actuator", "/favicon.ico");
   }
 
   @Bean
@@ -30,7 +24,8 @@ class ObservationConfiguration {
     return (name, context) -> {
       Context root = getRoot(context);
       if (root instanceof ServerRequestObservationContext serverContext) {
-        if (ignores.contains(serverContext.getCarrier().getRequestURI())) return false;
+        String request = serverContext.getCarrier().getRequestURI();
+        if (ignores.stream().anyMatch(ignore -> request.startsWith(ignore))) return false;
       }
       return true;
     };
