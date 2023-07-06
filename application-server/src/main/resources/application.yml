@@ -8,6 +8,9 @@ spring:
   web:
     resources:
       add-mappings: false
+  docker:
+    compose:
+      enabled: false
 
 server:
   shutdown: graceful

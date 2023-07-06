@@ -1,0 +1,22 @@
+spring:
+#  docker:
+#    compose:
+#      enabled: true
+#      file: ./docker/docker-compose.yml
+#      profiles:
+#        active:
+#          - localstack
+  cloud:
+    aws:
+      credentials:
+        access-key: localstack-access-key
+        secret-key: localstack-secret-key
+#      kms:
+#        master-key: cccc
+      s3:
+        bucket: showcase-bucket
+
+logging:
+  level:
+    com:
+      example: debug

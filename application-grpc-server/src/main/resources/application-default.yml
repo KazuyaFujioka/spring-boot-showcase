@@ -1,3 +1,14 @@
+spring:
+  docker:
+    compose:
+      enabled: true
+      file: ./docker/docker-compose.yml
+      profiles:
+        active:
+          - prometheus
+          - grafana
+          - zipkin
+
 server:
   port: 8081
 

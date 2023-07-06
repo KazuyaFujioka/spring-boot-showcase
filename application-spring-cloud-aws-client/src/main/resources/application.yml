@@ -1,6 +1,9 @@
 spring:
   application:
-    name: application-spring-cloud-aws
+    name: application-spring-cloud-aws-client
+  docker:
+    compose:
+      enabled: false
   cloud:
     aws:
       credentials:
@@ -8,8 +11,8 @@ spring:
         secret-key: ${AWS_SECRET_KEY}
       region:
         static: ap-northeast-1
-      kms:
-        master-key: ${AWS_KMS_MASTER_KEY}
+#      kms:
+#        master-key: ${AWS_KMS_MASTER_KEY}
       s3:
         region: ap-northeast-1
         bucket: ${AWS_S3_BUCKET_NAME}
