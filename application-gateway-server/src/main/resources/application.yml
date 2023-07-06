@@ -1,6 +1,9 @@
 spring:
   application:
     name: application-gateway-server
+  docker:
+    compose:
+      enabled: false
 
   cloud:
     gateway:

@@ -16,6 +16,7 @@ repositories {
 
 dependencies {
     implementation('org.springframework.boot:spring-boot-starter')
+    implementation('org.springframework.boot:spring-boot-docker-compose')
 
     implementation('io.awspring.cloud:spring-cloud-aws-starter-s3:3.0.1')
     //implementation('software.amazon.encryption.s3:amazon-s3-encryption-client-java:3.0.0')
