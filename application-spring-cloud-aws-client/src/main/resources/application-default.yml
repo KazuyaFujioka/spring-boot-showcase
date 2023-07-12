@@ -5,16 +5,18 @@ spring:
 #      file: ./docker/docker-compose.yml
 #      profiles:
 #        active:
-#          - localstack
+#          - minio
   cloud:
     aws:
       credentials:
-        access-key: localstack-access-key
-        secret-key: localstack-secret-key
-#      kms:
-#        master-key: cccc
+        access-key: AKIA6A7AXSVK1WRCH5JD
+        secret-key: Joqq62cnWfjpN7p+QmOQKhP3P+Nj3QqPqmdEGQQ
+      kms:
+        master-key: c2hvd2Nhc2UtbWFzdGVyLWtleQo=
       s3:
-        bucket: showcase-bucket
+        endpoint: http://127.0.0.1:9000
+        bucket: showcase-simple-bucket
+        encrypted-bucket: showcase-encrypted-bucket
 
 logging:
   level:

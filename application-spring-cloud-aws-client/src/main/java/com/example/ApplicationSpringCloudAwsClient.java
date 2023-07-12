@@ -6,29 +6,26 @@ import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import software.amazon.awssdk.services.s3.S3Client;
 
 @SpringBootApplication
 public class ApplicationSpringCloudAwsClient implements ApplicationRunner {
 
   // とりあえず以下を用意する
-  // TODO S3へのアップロード(LocalStack利用
+  // MinIOで構築
+  // https://go-tech.blog/aws/s3-minio/
+  // https://kazuhira-r.hatenablog.com/entry/2023/01/26/233603
+  // TODO S3へのアップロード(MinIO利用
   // シンプル
-  // レガシーモード
-  // 最新V3モード
   // 暗号化
   // レガシーモード
   // 最新V3モード
-  // TODO S3からのダウンロード(LocalStack利用
+  // TODO S3からのダウンロード(MinIO利用
   // シンプル
-  // レガシーモード
-  // 最新V3モード
   // 暗号化
   // レガシーモード
   // 最新V3モード
   // TODO SQSのpublish(LocalStack利用
   // TODO SQSのsubscribe(LocalStack利用
-  // FIXME docker-composeかねTestContainer使ってみる？
 
   Logger LOG = LoggerFactory.getLogger(ApplicationSpringCloudAwsClient.class);
 
@@ -36,11 +33,15 @@ public class ApplicationSpringCloudAwsClient implements ApplicationRunner {
     SpringApplication.run(ApplicationSpringCloudAwsClient.class, args);
   }
 
-  S3Client s3Client;
-  String bucket;
+  S3SimpleClient simpleClient;
 
   @Override
   public void run(ApplicationArguments args) throws Exception {
+    simpleClient.download(new S3ObjectKey("simple.csv"));
+
+    // TODO MinIOでSSE-KMSの設定が必要(動かない
+    // https://medium.com/swlh/encrypted-minio-storage-with-kms-setup-40d0a0eab1e9
+
     // FIXME 暗号化されたものを復号化した状態でダウンロードはできる
     //    String key = "SMD12/personal_customer_list_encrypted2.csv";
     //    try {
@@ -110,8 +111,7 @@ public class ApplicationSpringCloudAwsClient implements ApplicationRunner {
     //    }
   }
 
-  ApplicationSpringCloudAwsClient(S3Client s3Client, String bucket) {
-    this.s3Client = s3Client;
-    this.bucket = bucket;
+  ApplicationSpringCloudAwsClient(S3SimpleClient simpleClient) {
+    this.simpleClient = simpleClient;
   }
 }
