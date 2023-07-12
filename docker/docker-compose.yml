@@ -1,35 +1,30 @@
 services:
   prometheus:
-    image: prom/prometheus
-    container_name: prometheus
-    command:
-      - --config.file=/etc/prometheus/prometheus.yml
-    volumes:
-      - ./config/prometheus.yml:/etc/prometheus/prometheus.yml:ro
-    ports:
-      - "9090:9090"
+    extends:
+      file: ./prometheus.yml
+      service: prometheus
     profiles:
+      - default
       - prometheus
-  grafana:
-    image: grafana/grafana
-    container_name: grafana
-    extra_hosts: [ 'host.docker.internal:host-gateway' ]
-    environment:
-      - GF_AUTH_ANONYMOUS_ENABLED=true
-      - GF_AUTH_ANONYMOUS_ORG_ROLE=Admin
-      - GF_AUTH_DISABLE_LOGIN_FORM=true
-    ports:
-      - "3000:3000"
-    profiles:
       - grafana
-    depends_on:
-      - prometheus
-  zipkin:
-    image: openzipkin/zipkin-slim
-    container_name: zipkin
-    environment:
-      - STORAGE_TYPE=mem
-    ports:
-      - "9411:9411"
+  grafana:
+    extends:
+      file: ./grafana.yml
+      service: grafana
     profiles:
+      - default
+      - grafana
+  zipkin:
+    extends:
+      file: ./zipkin.yml
+      service: zipkin
+    profiles:
+      - default
       - zipkin
+  minio:
+    extends:
+      file: ./minio.yml
+      service: minio
+    profiles:
+      - default
+      - minio
