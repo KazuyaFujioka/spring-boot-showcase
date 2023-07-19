@@ -28,6 +28,7 @@ class WebClientConfiguration {
           HttpClient.create().compress(true).secure(option -> option.sslContext(sslContext));
 
       return builder
+          .clone()
           .baseUrl(gatewayServerProperties.toUrl())
           .clientConnector(new ReactorClientHttpConnector(httpClient))
           .build();
