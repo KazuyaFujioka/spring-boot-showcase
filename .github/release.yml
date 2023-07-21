@@ -9,6 +9,9 @@ changelog:
     - title: バグ修正
       labels:
         - bug-fix
+    - title: 依存ライブラリバージョンアップ
+      labels:
+        - dependencies
     - title: その他
       labels:
         - "*"
