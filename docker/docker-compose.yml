@@ -1,18 +1,19 @@
 services:
   prometheus:
     extends:
-      file: ./prometheus.yml
+      file: prometheus.yml
       service: prometheus
     profiles:
       - default
+      - observability
       - prometheus
-      - grafana
   grafana:
     extends:
       file: ./grafana.yml
       service: grafana
     profiles:
       - default
+      - observability
       - grafana
   zipkin:
     extends:
@@ -20,6 +21,7 @@ services:
       service: zipkin
     profiles:
       - default
+      - observability
       - zipkin
   minio:
     extends:
