@@ -5,8 +5,7 @@ spring:
       file: ./docker/docker-compose.yml
       profiles:
         active:
-          - grafana
-          - zipkin
+          - observability
 
   cloud:
     gateway:
