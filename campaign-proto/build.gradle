@@ -28,10 +28,7 @@ protobuf {
         grpc {
             artifact = 'io.grpc:protoc-gen-grpc-java:1.57.0'
         }
-        mddoc {
-            artifact = 'io.github.pseudomuto:protoc-gen-doc:1.5.1'
-        }
-        htmldoc {
+        docs {
             artifact = 'io.github.pseudomuto:protoc-gen-doc:1.5.1'
         }
     }
@@ -41,10 +38,7 @@ protobuf {
             grpc {
                 option 'enable_deprecated=false'
             }
-            mddoc {
-                option 'markdown,grpc-docs.md'
-            }
-            htmldoc {
+            docs {
                 option 'html,grpc-docs.html'
             }
         }
