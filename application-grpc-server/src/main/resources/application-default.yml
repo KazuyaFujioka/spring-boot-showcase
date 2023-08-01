@@ -5,7 +5,7 @@ spring:
       file: ./docker/docker-compose.yml
       profiles:
         active:
-          - observability
+          - "observability"
 
 server:
   port: 8081
