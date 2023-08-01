@@ -27,7 +27,7 @@ dependencies {
     implementation('io.opentelemetry:opentelemetry-exporter-zipkin')
     implementation('io.micrometer:micrometer-registry-prometheus')
 
-    compileOnly('org.springframework.boot:spring-boot-devtools')
+    developmentOnly('org.springframework.boot:spring-boot-devtools')
 }
 
 dependencyManagement {

@@ -21,7 +21,7 @@ dependencies {
     implementation('io.awspring.cloud:spring-cloud-aws-starter-s3:3.0.1')
     //implementation('software.amazon.encryption.s3:amazon-s3-encryption-client-java:3.0.0')
 
-    compileOnly('org.springframework.boot:spring-boot-devtools')
+    developmentOnly('org.springframework.boot:spring-boot-devtools')
 
     testImplementation('org.springframework.boot:spring-boot-starter-test')
     testImplementation('com.tngtech.archunit:archunit-junit5:1.0.1')

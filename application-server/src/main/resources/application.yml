@@ -3,8 +3,8 @@ spring:
     name: application-server
   mvc:
     throw-exception-if-no-handler-found: true
-    format:
-      date: iso
+    problemdetails:
+      enabled: true
   web:
     resources:
       add-mappings: false
