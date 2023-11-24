@@ -14,8 +14,7 @@ import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.reactive.function.client.WebClient;
-import reactor.core.publisher.Mono;
+import org.springframework.web.client.RestClient;
 
 @SpringBootApplication
 public class ApplicationClient implements ApplicationRunner {
@@ -26,35 +25,27 @@ public class ApplicationClient implements ApplicationRunner {
     SpringApplication.run(ApplicationClient.class, args);
   }
 
-  WebClient webClient;
+  RestClient restClient;
   ManagedChannel managedChannel;
 
   @Override
   public void run(ApplicationArguments args) throws Exception {
 
-    Mono<ResponseEntity<String>> responseEntityMono =
-        webClient
-            .get()
-            .uri(uriBuilder -> uriBuilder.path("/v1/campaign/ongoing").build())
-            .retrieve()
-            .toEntity(String.class);
+    ResponseEntity<String> responseEntity =
+        restClient.get().uri("/v1/campaign/ongoing").retrieve().toEntity(String.class);
 
-    ResponseEntity<String> responseEntity = responseEntityMono.block();
     String response = responseEntity.getBody();
     LOG.info(response);
 
     String campaignNumber = "dOY0aXcFv3grfpT";
 
-    responseEntityMono =
-        webClient
+    responseEntity =
+        restClient
             .get()
-            .uri(
-                uriBuilder ->
-                    uriBuilder.path("/v1/campaign/").path("{number}").build(campaignNumber))
+            .uri("/v1/campaign/{number}", campaignNumber)
             .retrieve()
             .toEntity(String.class);
 
-    responseEntity = responseEntityMono.block();
     response = responseEntity.getBody();
     LOG.info(response);
 
@@ -68,8 +59,8 @@ public class ApplicationClient implements ApplicationRunner {
     LOG.info(campaign.toString());
   }
 
-  ApplicationClient(WebClient webClient, ManagedChannel managedChannel) {
-    this.webClient = webClient;
+  ApplicationClient(RestClient restClient, ManagedChannel managedChannel) {
+    this.restClient = restClient;
     this.managedChannel = managedChannel;
   }
 }

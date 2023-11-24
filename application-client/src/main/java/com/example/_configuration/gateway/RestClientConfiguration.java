@@ -6,18 +6,17 @@ import io.netty.handler.ssl.util.InsecureTrustManagerFactory;
 import javax.net.ssl.SSLException;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.http.client.reactive.ReactorClientHttpConnector;
-import org.springframework.web.reactive.function.client.WebClient;
-import org.springframework.web.reactive.function.client.WebClient.Builder;
+import org.springframework.http.client.ReactorNettyClientRequestFactory;
+import org.springframework.web.client.RestClient;
 import reactor.netty.http.client.HttpClient;
 
 @Configuration
-class WebClientConfiguration {
+class RestClientConfiguration {
 
-  Builder builder;
+  RestClient.Builder builder;
 
   @Bean
-  WebClient webClient(GatewayServerProperties gatewayServerProperties) {
+  RestClient restClient(GatewayServerProperties gatewayServerProperties) {
     try {
       SslContext sslContext =
           SslContextBuilder.forClient()
@@ -30,14 +29,14 @@ class WebClientConfiguration {
       return builder
           .clone()
           .baseUrl(gatewayServerProperties.toUrl())
-          .clientConnector(new ReactorClientHttpConnector(httpClient))
+          .requestFactory(new ReactorNettyClientRequestFactory(httpClient))
           .build();
     } catch (SSLException exception) {
       throw new RuntimeException(exception);
     }
   }
 
-  WebClientConfiguration(Builder builder) {
+  RestClientConfiguration(RestClient.Builder builder) {
     this.builder = builder;
   }
 }
