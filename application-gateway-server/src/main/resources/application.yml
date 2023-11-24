@@ -62,8 +62,8 @@ management:
         enabled: true
     prometheus:
       enabled: true
-  metrics:
-    tags:
+  observations:
+    key-values:
       application: ${spring.application.name}
   tracing:
     sampling:
