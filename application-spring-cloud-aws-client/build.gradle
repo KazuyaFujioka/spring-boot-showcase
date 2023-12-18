@@ -3,7 +3,7 @@ plugins {
     id 'java'
     id 'org.springframework.boot' version '3.2.0'
     id 'io.spring.dependency-management' version '1.1.4'
-    id 'com.diffplug.spotless' version '6.22.0'
+    id 'com.diffplug.spotless' version '6.23.3'
 }
 
 group = 'com.example'
@@ -18,13 +18,13 @@ dependencies {
     implementation('org.springframework.boot:spring-boot-starter')
     implementation('org.springframework.boot:spring-boot-docker-compose')
 
-    implementation('io.awspring.cloud:spring-cloud-aws-starter-s3:3.0.3')
+    implementation('io.awspring.cloud:spring-cloud-aws-starter-s3:3.1.0')
     //implementation('software.amazon.encryption.s3:amazon-s3-encryption-client-java:3.0.0')
 
     developmentOnly('org.springframework.boot:spring-boot-devtools')
 
     testImplementation('org.springframework.boot:spring-boot-starter-test')
-    testImplementation('com.tngtech.archunit:archunit-junit5:1.2.0')
+    testImplementation('com.tngtech.archunit:archunit-junit5:1.2.1')
 }
 
 spotless {
