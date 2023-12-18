@@ -9,7 +9,7 @@ plugins {
 
 group = 'com.example'
 version = '0.0.1-SNAPSHOT'
-sourceCompatibility = '17'
+sourceCompatibility = '21'
 
 repositories {
     mavenCentral()
@@ -42,7 +42,7 @@ dependencies {
 configurations.all {
     resolutionStrategy.eachDependency { details ->
         if ("io.grpc".equalsIgnoreCase(details.requested.group)) {
-            details.useVersion "1.57.0"
+            details.useVersion "1.58.0"
         }
     }
 }
