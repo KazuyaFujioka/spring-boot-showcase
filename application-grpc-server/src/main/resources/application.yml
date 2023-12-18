@@ -1,8 +1,10 @@
 spring:
   application:
     name: grpc-application-server
+  threads:
+    virtual:
+      enabled: true
   mvc:
-    throw-exception-if-no-handler-found: true
     format:
       date: iso
   web:
@@ -32,8 +34,8 @@ management:
         enabled: true
     prometheus:
       enabled: true
-  metrics:
-    tags:
+  observations:
+    key-values:
       application: ${spring.application.name}
   tracing:
     sampling:
