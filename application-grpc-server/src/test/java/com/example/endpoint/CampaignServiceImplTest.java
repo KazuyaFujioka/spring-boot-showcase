@@ -19,20 +19,17 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.lognet.springboot.grpc.context.LocalRunningGrpcPort;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
 class CampaignServiceImplTest {
-
-  @LocalRunningGrpcPort int gRPCRunningPort;
 
   CampaignServiceBlockingStub stub;
 
   @BeforeEach
   void setup() throws SSLException {
     ManagedChannel channel =
-        NettyChannelBuilder.forAddress("localhost", gRPCRunningPort)
+        NettyChannelBuilder.forAddress("localhost", 6565)
             .useTransportSecurity()
             .sslContext(
                 GrpcSslContexts.forClient()
