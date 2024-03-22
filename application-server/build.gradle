@@ -35,7 +35,7 @@ dependencies {
     testImplementation('org.springframework.boot:spring-boot-starter-test')
     testImplementation('com.tngtech.archunit:archunit-junit5:1.2.1')
     testImplementation('com.intuit.karate:karate-junit5:1.4.1')
-    testImplementation('net.masterthought:cucumber-reporting:5.7.8')
+    testImplementation('net.masterthought:cucumber-reporting:5.8.0')
 }
 
 spotless {
