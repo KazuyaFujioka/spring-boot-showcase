@@ -5,7 +5,7 @@ import static com.tngtech.archunit.lang.syntax.ArchRuleDefinition.classes;
 import com.tngtech.archunit.junit.AnalyzeClasses;
 import com.tngtech.archunit.junit.ArchTest;
 import com.tngtech.archunit.lang.ArchRule;
-import org.lognet.springboot.grpc.GRpcService;
+import net.devh.boot.grpc.server.service.GrpcService;
 
 /** エンドポイントが定義通りに実装が行われているかを確認するテスト */
 @AnalyzeClasses
@@ -29,5 +29,5 @@ class EndpointArchitectureTest {
           .and()
           .resideInAPackage(LayeredArchitectureTest.endpointPackage)
           .should()
-          .beAnnotatedWith(GRpcService.class);
+          .beAnnotatedWith(GrpcService.class);
 }
