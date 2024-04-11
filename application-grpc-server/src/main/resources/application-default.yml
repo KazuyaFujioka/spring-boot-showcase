@@ -16,6 +16,7 @@ logging:
       example: debug
 
 grpc:
-  security:
-    cert-chain: classpath:server-cert.pem
-    private-key: classpath:server-key.pem
+  server:
+    security:
+      certificate-chain: classpath:server-cert.pem
+      private-key: classpath:server-key.pem

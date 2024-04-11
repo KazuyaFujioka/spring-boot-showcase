@@ -42,10 +42,11 @@ management:
       probability: 1.0
 
 grpc:
-  enableReflection: true
-  enabled: true
-  # FIXME spring cloud gatewayを使う為にはSSL/TLS設定が必須
-  security:
-    cert-chain: ${GRPC_SECURITY_CERT_CHAIN}
-    private-key: ${GRPC_SECURITY_PRIVATE_KEY}
-  shutdownGrace: 30
+  server:
+    port: 6565
+    # FIXME spring cloud gatewayを使う為にはSSL/TLS設定が必須
+    security:
+      enabled: true
+      certificate-chain: ${GRPC_SECURITY_CERT_CHAIN}
+      private-key: ${GRPC_SECURITY_PRIVATE_KEY}
+    shutdown-grace-period: 30
