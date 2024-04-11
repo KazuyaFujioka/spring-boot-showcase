@@ -25,7 +25,7 @@ dependencies {
     implementation('org.springframework.boot:spring-boot-docker-compose')
 
     implementation('net.devh:grpc-server-spring-boot-starter:3.0.0.RELEASE')
-    implementation('com.google.protobuf:protobuf-java-util:3.25.3')
+    implementation('com.google.protobuf:protobuf-java-util:4.26.1')
 
     implementation('io.micrometer:micrometer-tracing-bridge-otel')
     implementation('io.opentelemetry:opentelemetry-exporter-zipkin')
