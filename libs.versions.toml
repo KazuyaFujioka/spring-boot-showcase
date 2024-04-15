@@ -3,7 +3,7 @@ spring-boot = "3.2.4"
 sentry = "7.8.0"
 grpc = "1.63.0"
 grpc-spring-boot = "3.1.0.RELEASE"
-protobuf = "3.25.3"
+protobuf = "4.26.1"
 
 [libraries]
 spring-boot-starter = { module = "org.springframework.boot:spring-boot-starter" }
