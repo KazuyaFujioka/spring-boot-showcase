@@ -1,33 +1,37 @@
 plugins {
-    id 'idea'
-    id 'java'
-    id 'org.springframework.boot' version '3.2.4'
-    id 'io.spring.dependency-management' version '1.1.4'
-    id 'com.diffplug.spotless' version '6.25.0'
-    id 'org.dddjava.jig-gradle-plugin' version '2024.3.1'
+    id "idea"
+    id "java"
+    alias(libs.plugins.spring.boot)
+    alias(libs.plugins.spring.dependency.management)
+    alias(libs.plugins.spotless)
+    alias(libs.plugins.jig)
 }
 
-group = 'com.example'
-version = '0.0.1-SNAPSHOT'
-sourceCompatibility = '21'
+group = "com.example"
+version = "0.0.1-SNAPSHOT"
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_21
+    targetCompatibility = JavaVersion.VERSION_21
+}
 
 repositories {
     mavenCentral()
 }
 
 dependencies {
-    implementation('org.springframework.boot:spring-boot-starter')
-    implementation('org.springframework.boot:spring-boot-starter-json')
+    implementation(libs.spring.boot.starter)
+    implementation(libs.spring.boot.starter.json)
 
-    developmentOnly('org.springframework.boot:spring-boot-devtools')
+    developmentOnly(libs.spring.boot.devtools)
 
-    testImplementation('org.springframework.boot:spring-boot-starter-test')
-    testImplementation('com.tngtech.archunit:archunit-junit5:1.2.1')
+    testImplementation(libs.spring.boot.starter.test)
+    testImplementation(libs.archunit)
 }
 
 spotless {
     java {
-        googleJavaFormat()
+        googleJavaFormat().skipJavadocFormatting()
     }
 }
 
@@ -35,6 +39,6 @@ bootJar {
     enabled = false
 }
 
-tasks.named('test') {
+tasks.named("test") {
     useJUnitPlatform()
 }

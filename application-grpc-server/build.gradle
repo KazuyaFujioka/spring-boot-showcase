@@ -1,14 +1,18 @@
 plugins {
-    id 'idea'
-    id 'java'
-    id 'org.springframework.boot' version '3.2.4'
-    id 'io.spring.dependency-management' version '1.1.4'
-    id 'com.diffplug.spotless' version '6.25.0'
+    id "idea"
+    id "java"
+    alias(libs.plugins.spring.boot)
+    alias(libs.plugins.spring.dependency.management)
+    alias(libs.plugins.spotless)
 }
 
-group = 'com.example'
-version = '0.0.1-SNAPSHOT'
-sourceCompatibility = '21'
+group = "com.example"
+version = "0.0.1-SNAPSHOT"
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_21
+    targetCompatibility = JavaVersion.VERSION_21
+}
 
 repositories {
     mavenCentral()
@@ -17,43 +21,43 @@ repositories {
 dependencies {
     // Spring Modulithを使えないかな
     // https://docs.spring.io/spring-modulith/docs/current-SNAPSHOT/reference/html/
-    implementation project(':campaign')
-    implementation project(':campaign-proto')
+    implementation project(":campaign")
+    implementation project(":campaign-proto")
 
-    implementation('org.springframework.boot:spring-boot-starter-web')
-    implementation('org.springframework.boot:spring-boot-starter-actuator')
-    implementation('org.springframework.boot:spring-boot-docker-compose')
+    implementation(libs.spring.boot.starter.web)
+    implementation(libs.spring.boot.starter.actuator)
+    implementation(libs.spring.boot.docker.compose)
 
-    implementation('net.devh:grpc-server-spring-boot-starter:3.0.0.RELEASE')
-    implementation('com.google.protobuf:protobuf-java-util:3.25.3')
+    implementation(libs.grpc.server.spring.boot)
+    implementation(libs.protobuf.java.util)
 
-    implementation('io.micrometer:micrometer-tracing-bridge-otel')
-    implementation('io.opentelemetry:opentelemetry-exporter-zipkin')
-    implementation('io.micrometer:micrometer-registry-prometheus')
-    implementation('io.opentelemetry.instrumentation:opentelemetry-grpc-1.6:1.32.0-alpha')
+    implementation(libs.micrometer.tracing.bridge)
+    implementation(libs.micrometer.prometheus)
+    implementation(libs.opentelemetry.zipkin)
+    implementation(libs.opentelemetry.grpc)
 
-    developmentOnly('org.springframework.boot:spring-boot-devtools')
+    developmentOnly(libs.spring.boot.devtools)
 
-    testImplementation('org.springframework.boot:spring-boot-starter-test')
-    testImplementation('com.tngtech.archunit:archunit-junit5:1.2.1')
+    testImplementation(libs.spring.boot.starter.test)
+    testImplementation(libs.archunit)
 }
 
 sourceSets {
     main {
         java {
-            srcDirs 'build/generated/source/proto/main/grpc'
-            srcDirs 'build/generated/source/proto/main/java'
+            srcDirs "build/generated/source/proto/main/grpc"
+            srcDirs "build/generated/source/proto/main/java"
         }
     }
 }
 
 spotless {
     java {
-        target 'src/**/*.java'
-        googleJavaFormat()
+        target "src/**/*.java"
+        googleJavaFormat().skipJavadocFormatting()
     }
 }
 
-tasks.named('test') {
+tasks.named("test") {
     useJUnitPlatform()
 }
