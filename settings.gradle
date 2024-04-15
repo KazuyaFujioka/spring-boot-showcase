@@ -7,3 +7,11 @@ include ":application-server"
 include ":application-spring-cloud-aws-client"
 include ":campaign"
 include ":campaign-proto"
+
+dependencyResolutionManagement {
+    versionCatalogs {
+        libs {
+            from(files("libs.versions.toml"))
+        }
+    }
+}

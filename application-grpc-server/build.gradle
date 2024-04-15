@@ -1,9 +1,9 @@
 plugins {
     id "idea"
     id "java"
-    id "org.springframework.boot" version "3.2.4"
-    id "io.spring.dependency-management" version "1.1.4"
-    id "com.diffplug.spotless" version "6.25.0"
+    alias(libs.plugins.spring.boot)
+    alias(libs.plugins.spring.dependency.management)
+    alias(libs.plugins.spotless)
 }
 
 group = "com.example"
@@ -24,22 +24,22 @@ dependencies {
     implementation project(":campaign")
     implementation project(":campaign-proto")
 
-    implementation("org.springframework.boot:spring-boot-starter-web")
-    implementation("org.springframework.boot:spring-boot-starter-actuator")
-    implementation("org.springframework.boot:spring-boot-docker-compose")
+    implementation(libs.spring.boot.starter.web)
+    implementation(libs.spring.boot.starter.actuator)
+    implementation(libs.spring.boot.docker.compose)
 
-    implementation("net.devh:grpc-server-spring-boot-starter:3.0.0.RELEASE")
-    implementation("com.google.protobuf:protobuf-java-util:3.25.3")
+    implementation(libs.grpc.server.spring.boot)
+    implementation(libs.protobuf.java.util)
 
-    implementation("io.micrometer:micrometer-tracing-bridge-otel")
-    implementation("io.opentelemetry:opentelemetry-exporter-zipkin")
-    implementation("io.micrometer:micrometer-registry-prometheus")
-    implementation("io.opentelemetry.instrumentation:opentelemetry-grpc-1.6:1.32.0-alpha")
+    implementation(libs.micrometer.tracing.bridge)
+    implementation(libs.micrometer.prometheus)
+    implementation(libs.opentelemetry.zipkin)
+    implementation(libs.opentelemetry.grpc)
 
-    developmentOnly("org.springframework.boot:spring-boot-devtools")
+    developmentOnly(libs.spring.boot.devtools)
 
-    testImplementation("org.springframework.boot:spring-boot-starter-test")
-    testImplementation("com.tngtech.archunit:archunit-junit5:1.2.1")
+    testImplementation(libs.spring.boot.starter.test)
+    testImplementation(libs.archunit)
 }
 
 sourceSets {
