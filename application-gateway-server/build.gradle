@@ -1,33 +1,37 @@
 plugins {
-    id 'idea'
-    id 'java'
-    id 'org.springframework.boot' version '3.2.4'
-    id 'io.spring.dependency-management' version '1.1.4'
-    id 'com.diffplug.spotless' version '6.25.0'
+    id "idea"
+    id "java"
+    id "org.springframework.boot" version "3.2.4"
+    id "io.spring.dependency-management" version "1.1.4"
+    id "com.diffplug.spotless" version "6.25.0"
 }
 
-group = 'com.example'
-version = '0.0.1-SNAPSHOT'
-sourceCompatibility = '21'
+group = "com.example"
+version = "0.0.1-SNAPSHOT"
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_21
+    targetCompatibility = JavaVersion.VERSION_21
+}
 
 repositories {
     mavenCentral()
 }
 
 ext {
-    set('springCloudVersion', "2023.0.0")
+    set("springCloudVersion", "2023.0.0")
 }
 
 dependencies {
-    implementation('org.springframework.cloud:spring-cloud-starter-gateway')
-    implementation('org.springframework.boot:spring-boot-starter-actuator')
-    implementation('org.springframework.boot:spring-boot-docker-compose')
+    implementation("org.springframework.cloud:spring-cloud-starter-gateway")
+    implementation("org.springframework.boot:spring-boot-starter-actuator")
+    implementation("org.springframework.boot:spring-boot-docker-compose")
 
-    implementation('io.micrometer:micrometer-tracing-bridge-otel')
-    implementation('io.opentelemetry:opentelemetry-exporter-zipkin')
-    implementation('io.micrometer:micrometer-registry-prometheus')
+    implementation("io.micrometer:micrometer-tracing-bridge-otel")
+    implementation("io.opentelemetry:opentelemetry-exporter-zipkin")
+    implementation("io.micrometer:micrometer-registry-prometheus")
 
-    developmentOnly('org.springframework.boot:spring-boot-devtools')
+    developmentOnly("org.springframework.boot:spring-boot-devtools")
 }
 
 dependencyManagement {
@@ -38,10 +42,10 @@ dependencyManagement {
 
 spotless {
     java {
-        googleJavaFormat()
+        googleJavaFormat().skipJavadocFormatting()
     }
 }
 
-tasks.named('test') {
+tasks.named("test") {
     useJUnitPlatform()
 }

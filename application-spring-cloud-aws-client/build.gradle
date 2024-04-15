@@ -1,38 +1,42 @@
 plugins {
-    id 'idea'
-    id 'java'
-    id 'org.springframework.boot' version '3.2.4'
-    id 'io.spring.dependency-management' version '1.1.4'
-    id 'com.diffplug.spotless' version '6.25.0'
+    id "idea"
+    id "java"
+    id "org.springframework.boot" version "3.2.4"
+    id "io.spring.dependency-management" version "1.1.4"
+    id "com.diffplug.spotless" version "6.25.0"
 }
 
-group = 'com.example'
-version = '0.0.1-SNAPSHOT'
-sourceCompatibility = '21'
+group = "com.example"
+version = "0.0.1-SNAPSHOT"
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_21
+    targetCompatibility = JavaVersion.VERSION_21
+}
 
 repositories {
     mavenCentral()
 }
 
 dependencies {
-    implementation('org.springframework.boot:spring-boot-starter')
-    implementation('org.springframework.boot:spring-boot-docker-compose')
+    implementation("org.springframework.boot:spring-boot-starter")
+    implementation("org.springframework.boot:spring-boot-docker-compose")
 
-    implementation('io.awspring.cloud:spring-cloud-aws-starter-s3:3.1.1')
-    //implementation('software.amazon.encryption.s3:amazon-s3-encryption-client-java:3.0.0')
+    implementation("io.awspring.cloud:spring-cloud-aws-starter-s3:3.1.1")
+    //implementation("software.amazon.encryption.s3:amazon-s3-encryption-client-java:3.0.0")
 
-    developmentOnly('org.springframework.boot:spring-boot-devtools')
+    developmentOnly("org.springframework.boot:spring-boot-devtools")
 
-    testImplementation('org.springframework.boot:spring-boot-starter-test')
-    testImplementation('com.tngtech.archunit:archunit-junit5:1.2.1')
+    testImplementation("org.springframework.boot:spring-boot-starter-test")
+    testImplementation("com.tngtech.archunit:archunit-junit5:1.2.1")
 }
 
 spotless {
     java {
-        googleJavaFormat()
+        googleJavaFormat().skipJavadocFormatting()
     }
 }
 
-tasks.named('test') {
+tasks.named("test") {
     useJUnitPlatform()
 }

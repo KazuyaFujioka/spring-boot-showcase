@@ -1,9 +1,9 @@
-rootProject.name = 'spring-boot-showcase'
+rootProject.name = "spring-boot-showcase"
 
-include ':application-client'
-include ':application-gateway-server'
-include ':application-grpc-server'
-include ':application-server'
-include ':application-spring-cloud-aws-client'
-include ':campaign'
-include ':campaign-proto'
+include ":application-client"
+include ":application-gateway-server"
+include ":application-grpc-server"
+include ":application-server"
+include ":application-spring-cloud-aws-client"
+include ":campaign"
+include ":campaign-proto"
