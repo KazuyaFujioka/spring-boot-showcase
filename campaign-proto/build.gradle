@@ -17,10 +17,9 @@ repositories {
 }
 
 dependencies {
-    implementation(libs.protobuf.java.util)
     implementation(libs.grpc.protobuf)
     implementation(libs.grpc.stub)
-    implementation(libs.javax.annotation.api)
+    compileOnly(libs.javax.annotation.api)
 }
 
 protobuf {
