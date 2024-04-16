@@ -17,8 +17,7 @@ repositories {
 }
 
 dependencies {
-    implementation(libs.grpc.protobuf)
-    implementation(libs.grpc.stub)
+    implementation(libs.bundles.grpc)
     compileOnly(libs.javax.annotation.api)
 }
 

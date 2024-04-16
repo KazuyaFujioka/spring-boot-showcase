@@ -23,8 +23,10 @@ grpc-client-spring-boot = { module = "net.devh:grpc-client-spring-boot-starter",
 grpc-protobuf = { module = "io.grpc:grpc-protobuf", version.ref = "grpc" }
 grpc-stub = { module = "io.grpc:grpc-stub", version.ref = "grpc" }
 grpc-protoc-gen = { module = "io.grpc:protoc-gen-grpc-java", version.ref = "grpc" }
+
 protobuf-protoc = { module = "com.google.protobuf:protoc", version.ref = "protobuf" }
 protobuf-java-util = { module = "com.google.protobuf:protobuf-java-util", version.ref = "protobuf" }
+
 javax-annotation-api = { module = "javax.annotation:javax.annotation-api", version = "1.3.2" }
 
 aws-spring-cloud-s3 = { module = "io.awspring.cloud:spring-cloud-aws-starter-s3", version = "3.1.1" }
@@ -43,6 +45,7 @@ cucumber-reporting = { module = "net.masterthought:cucumber-reporting", version 
 archunit = { module="com.tngtech.archunit:archunit-junit5", version="1.3.0" }
 
 [bundles]
+grpc = [ "grpc-protobuf", "grpc-stub" ]
 
 [plugins]
 spring-boot = { id = "org.springframework.boot", version.ref = "spring-boot" }
