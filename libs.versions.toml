@@ -1,5 +1,5 @@
 [versions]
-spring-boot = "3.2.4"
+spring-boot = "3.2.5"
 grpc = "1.63.0"
 grpc-spring-boot = "3.1.0.RELEASE"
 protobuf = "3.25.3"
