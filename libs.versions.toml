@@ -35,7 +35,7 @@ micrometer-tracing-bridge = { module = "io.micrometer:micrometer-tracing-bridge-
 micrometer-prometheus = { module = "io.micrometer:micrometer-registry-prometheus" }
 
 opentelemetry-zipkin = { module = "io.opentelemetry:opentelemetry-exporter-zipkin" }
-opentelemetry-grpc = { module = "io.opentelemetry.instrumentation:opentelemetry-grpc-1.6", version = "2.3.0-alpha" }
+opentelemetry-grpc = { module = "io.opentelemetry.instrumentation:opentelemetry-grpc-1.6", version = "2.4.0-alpha" }
 
 springdoc-openapi = { module = "org.springdoc:springdoc-openapi-starter-webmvc-ui", version = "2.5.0" }
 protoc-gen-doc = { module = "io.github.pseudomuto:protoc-gen-doc", version = "1.5.1" }
