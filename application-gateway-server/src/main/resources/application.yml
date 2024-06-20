@@ -54,14 +54,20 @@ management:
       exposure:
         include:
           - "health"
+          - "metrics"
           - "prometheus"
   endpoint:
     health:
       enabled: true
       probes:
         enabled: true
+    metrics:
+      enabled: true
     prometheus:
       enabled: true
+  metrics:
+    tags:
+      application: ${spring.application.name}
   observations:
     key-values:
       application: ${spring.application.name}
