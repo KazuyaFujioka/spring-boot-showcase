@@ -41,7 +41,7 @@ springdoc-openapi = { module = "org.springdoc:springdoc-openapi-starter-webmvc-u
 protoc-gen-doc = { module = "io.github.pseudomuto:protoc-gen-doc", version = "1.5.1" }
 
 karate = { module = "com.intuit.karate:karate-junit5", version = "1.4.1" }
-cucumber-reporting = { module = "net.masterthought:cucumber-reporting", version = "5.8.1" }
+cucumber-reporting = { module = "net.masterthought:cucumber-reporting", version = "5.8.2" }
 archunit = { module="com.tngtech.archunit:archunit-junit5", version="1.3.0" }
 
 [bundles]
