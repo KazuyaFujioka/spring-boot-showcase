@@ -10,32 +10,23 @@ import com.google.protobuf.StringValue;
 import io.grpc.ManagedChannel;
 import io.grpc.Status;
 import io.grpc.StatusRuntimeException;
-import io.grpc.netty.shaded.io.grpc.netty.GrpcSslContexts;
-import io.grpc.netty.shaded.io.grpc.netty.NegotiationType;
 import io.grpc.netty.shaded.io.grpc.netty.NettyChannelBuilder;
-import io.grpc.netty.shaded.io.netty.handler.ssl.util.InsecureTrustManagerFactory;
-import javax.net.ssl.SSLException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
-@SpringBootTest
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT)
 class CampaignServiceImplTest {
 
   CampaignServiceBlockingStub stub;
 
   @BeforeEach
-  void setup() throws SSLException {
+  void setup() {
     ManagedChannel channel =
         NettyChannelBuilder.forAddress("localhost", 6565)
-            .useTransportSecurity()
-            .sslContext(
-                GrpcSslContexts.forClient()
-                    .trustManager(InsecureTrustManagerFactory.INSTANCE) // FIXME localhost用
-                    .build())
-            .negotiationType(NegotiationType.TLS)
+            .usePlaintext()
             .build();
     stub = CampaignServiceGrpc.newBlockingStub(channel);
   }
