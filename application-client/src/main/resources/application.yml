@@ -6,7 +6,8 @@ spring:
 
 management:
   endpoints:
-    enabled-by-default: false
+    access:
+      default: none
   tracing:
     sampling:
       probability: 1.0

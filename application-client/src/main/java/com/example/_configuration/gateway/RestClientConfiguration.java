@@ -6,7 +6,7 @@ import io.netty.handler.ssl.util.InsecureTrustManagerFactory;
 import javax.net.ssl.SSLException;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.http.client.ReactorNettyClientRequestFactory;
+import org.springframework.http.client.ReactorClientHttpRequestFactory;
 import org.springframework.web.client.RestClient;
 import reactor.netty.http.client.HttpClient;
 
@@ -29,7 +29,7 @@ class RestClientConfiguration {
       return builder
           .clone()
           .baseUrl(gatewayServerProperties.toUrl())
-          .requestFactory(new ReactorNettyClientRequestFactory(httpClient))
+          .requestFactory(new ReactorClientHttpRequestFactory(httpClient))
           .build();
     } catch (SSLException exception) {
       throw new RuntimeException(exception);

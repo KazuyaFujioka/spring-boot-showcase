@@ -21,7 +21,8 @@ server:
 
 management:
   endpoints:
-    enabled-by-default: false
+    access:
+      default: none
     web:
       exposure:
         include:
@@ -30,13 +31,13 @@ management:
           - "prometheus"
   endpoint:
     health:
-      enabled: true
+      access: read_only
       probes:
         enabled: true
     metrics:
-      enabled: true
+      access: read_only
     prometheus:
-      enabled: true
+      access: read_only
   metrics:
     tags:
       application: ${spring.application.name}

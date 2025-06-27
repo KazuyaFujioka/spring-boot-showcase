@@ -8,30 +8,32 @@ spring:
   cloud:
     gateway:
       # FIXME spring cloud gatewayを使う為にはSSL/TLS設定が必須
-      httpclient:
-        ssl:
-          use-insecure-trust-manager: true
-      routes:
-        - id: find-ongoing-campaign-rest
-          uri: ${FIND_ONGOING_CAMPAIGN_REST}
-          predicates:
-            - Path=/v1/campaign/ongoing
-        - id: find-campaign-rest
-          uri: ${FIND_ONGOING_CAMPAIGN_REST}
-          predicates:
-            - Path=/v1/campaign/**
-        - id: find-ongoing-campaign-grpc
-          uri: ${FIND_ONGOING_CAMPAIGN_gRPC}
-          predicates:
-            - Path=/protobuf.CampaignService/findOngoingCampaign
-          filters:
-            - AddResponseHeader=X-Request-header, header-value
-        - id: find-campaign-grpc
-          uri: ${FIND_ONGOING_CAMPAIGN_gRPC}
-          predicates:
-            - Path=/protobuf.CampaignService/findCampaign
-          filters:
-            - AddResponseHeader=X-Request-header, header-value
+      server:
+        webflux:
+          httpclient:
+            ssl:
+              use-insecure-trust-manager: true
+          routes:
+            - id: find-ongoing-campaign-rest
+              uri: ${FIND_ONGOING_CAMPAIGN_REST}
+              predicates:
+                - Path=/v1/campaign/ongoing
+            - id: find-campaign-rest
+              uri: ${FIND_ONGOING_CAMPAIGN_REST}
+              predicates:
+                - Path=/v1/campaign/**
+            - id: find-ongoing-campaign-grpc
+              uri: ${FIND_ONGOING_CAMPAIGN_gRPC}
+              predicates:
+                - Path=/protobuf.CampaignService/findOngoingCampaign
+              filters:
+                - AddResponseHeader=X-Request-header, header-value
+            - id: find-campaign-grpc
+              uri: ${FIND_ONGOING_CAMPAIGN_gRPC}
+              predicates:
+                - Path=/protobuf.CampaignService/findCampaign
+              filters:
+                - AddResponseHeader=X-Request-header, header-value
 
 server:
   # FIXME spring cloud gatewayを使う為にはSSL/TLS設定が必須
@@ -49,7 +51,8 @@ server:
 
 management:
   endpoints:
-    enabled-by-default: false
+    access:
+      default: none
     web:
       exposure:
         include:
@@ -58,13 +61,13 @@ management:
           - "prometheus"
   endpoint:
     health:
-      enabled: true
+      access: read_only
       probes:
         enabled: true
     metrics:
-      enabled: true
+      access: read_only
     prometheus:
-      enabled: true
+      access: read_only
   metrics:
     tags:
       application: ${spring.application.name}
