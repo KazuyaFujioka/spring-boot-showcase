@@ -25,9 +25,7 @@ class CampaignServiceImplTest {
   @BeforeEach
   void setup() {
     ManagedChannel channel =
-        NettyChannelBuilder.forAddress("localhost", 6565)
-            .usePlaintext()
-            .build();
+        NettyChannelBuilder.forAddress("localhost", 6565).usePlaintext().build();
     stub = CampaignServiceGrpc.newBlockingStub(channel);
   }
 
