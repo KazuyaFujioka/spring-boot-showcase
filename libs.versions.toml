@@ -1,9 +1,9 @@
 [versions]
 spring-boot = "3.5.3"
 spring-cloud = "2025.0.0"
-grpc = "1.63.0"
+grpc = "1.73.0"
 grpc-spring-boot = "3.1.0.RELEASE"
-protobuf = "3.25.5"
+protobuf = "3.25.8"
 micrometer = "1.14.1"
 opentelemetry = "2.8.0"
 
@@ -25,6 +25,7 @@ grpc-server-spring-boot = { module = "net.devh:grpc-server-spring-boot-starter",
 grpc-client-spring-boot = { module = "net.devh:grpc-client-spring-boot-starter", version.ref = "grpc-spring-boot" }
 grpc-protobuf = { module = "io.grpc:grpc-protobuf", version.ref = "grpc" }
 grpc-stub = { module = "io.grpc:grpc-stub", version.ref = "grpc" }
+grpc-netty = { module = "io.grpc:grpc-netty", version.ref = "grpc" }
 grpc-protoc-gen = { module = "io.grpc:protoc-gen-grpc-java", version.ref = "grpc" }
 
 protobuf-protoc = { module = "com.google.protobuf:protoc", version.ref = "protobuf" }
@@ -53,7 +54,7 @@ grpc = [ "grpc-protobuf", "grpc-stub" ]
 [plugins]
 spring-boot = { id = "org.springframework.boot", version.ref = "spring-boot" }
 spring-dependency-management = { id = "io.spring.dependency-management", version = "1.1.6" }
-protobuf = { id = "com.google.protobuf", version = "0.9.4" }
+protobuf = { id = "com.google.protobuf", version = "0.8.19" }
 springdoc-openapi = { id = "org.springdoc.openapi-gradle-plugin", version = "1.9.0" }
 spotless = { id = "com.diffplug.spotless", version = "6.25.0" }
 jig = { id = "org.dddjava.jig-gradle-plugin", version = "2024.12.1" }
