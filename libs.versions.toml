@@ -1,5 +1,5 @@
 [versions]
-spring-boot = "3.5.3"
+spring-boot = "3.5.6"
 spring-cloud = "2025.0.0"
 grpc = "1.73.0"
 grpc-spring-boot = "3.1.0.RELEASE"
