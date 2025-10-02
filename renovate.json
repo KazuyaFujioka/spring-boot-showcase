@@ -19,5 +19,41 @@
     "stabilityDays": 2
   },
   "packageRules": [
+    {
+      "groupName": "gRPC",
+      "matchPackageNames": ["io.grpc:**", "net.devh:**"],
+      "stabilityDays": 5
+    },
+    {
+      "groupName": "Protobuf",
+      "matchPackageNames": ["com.google.protobuf:**"],
+      "stabilityDays": 3
+    },
+    {
+      "groupName": "AWS Spring Cloud",
+      "matchPackageNames": ["io.awspring.cloud:**"],
+      "stabilityDays": 7
+    },
+    {
+      "groupName": "OpenTelemetry",
+      "matchPackageNames": ["io.opentelemetry:**", "io.micrometer:**"],
+      "stabilityDays": 5
+    },
+    {
+      "groupName": "Testing",
+      "matchPackageNames": ["com.intuit.karate:**", "com.tngtech.archunit:**", "net.masterthought:**"],
+      "stabilityDays": 2
+    },
+    {
+      "groupName": "Documentation",
+      "matchPackageNames": ["org.springdoc:**", "io.github.pseudomuto:**"],
+      "stabilityDays": 3
+    },
+    {
+      "groupName": "Gradle Plugins",
+      "matchPackageNames": ["com.diffplug.spotless:**", "org.dddjava.jig-gradle-plugin:**", "com.google.protobuf:**"],
+      "matchCategories": ["gradle"],
+      "stabilityDays": 2
+    }
   ]
 }
