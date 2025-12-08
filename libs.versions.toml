@@ -31,7 +31,7 @@ protobuf-java-util = { module = "com.google.protobuf:protobuf-java-util", versio
 
 javax-annotation-api = { module = "javax.annotation:javax.annotation-api", version = "1.3.2" }
 
-aws-spring-cloud-s3 = { module = "io.awspring.cloud:spring-cloud-aws-starter-s3", version = "3.4.0" }
+aws-spring-cloud-s3 = { module = "io.awspring.cloud:spring-cloud-aws-starter-s3", version = "3.4.2" }
 
 micrometer-tracing-bridge = { module = "io.micrometer:micrometer-tracing-bridge-otel" }
 micrometer-prometheus = { module = "io.micrometer:micrometer-registry-prometheus" }
