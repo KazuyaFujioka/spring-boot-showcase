@@ -39,7 +39,7 @@ micrometer-prometheus = { module = "io.micrometer:micrometer-registry-prometheus
 opentelemetry-zipkin = { module = "io.opentelemetry:opentelemetry-exporter-zipkin" }
 opentelemetry-grpc = { module = "io.opentelemetry.instrumentation:opentelemetry-grpc-1.6", version = "2.20.1-alpha" }
 
-springdoc-openapi = { module = "org.springdoc:springdoc-openapi-starter-webmvc-ui", version = "2.8.13" }
+springdoc-openapi = { module = "org.springdoc:springdoc-openapi-starter-webmvc-ui", version = "2.8.15" }
 protoc-gen-doc = { module = "io.github.pseudomuto:protoc-gen-doc", version = "1.5.1" }
 
 karate = { module = "com.intuit.karate:karate-junit5", version = "1.4.1" }
