@@ -28,7 +28,6 @@ spring-grpc-client-spring-boot-starter = { module = "org.springframework.grpc:sp
 grpc-client-spring-boot = { module = "net.devh:grpc-client-spring-boot-starter", version.ref = "grpc-spring-boot" }
 grpc-protobuf = { module = "io.grpc:grpc-protobuf", version.ref = "grpc" }
 grpc-stub = { module = "io.grpc:grpc-stub", version.ref = "grpc" }
-grpc-netty = { module = "io.grpc:grpc-netty", version.ref = "grpc" }
 grpc-protoc-gen = { module = "io.grpc:protoc-gen-grpc-java", version.ref = "grpc" }
 
 protobuf-protoc = { module = "com.google.protobuf:protoc", version.ref = "protobuf" }
