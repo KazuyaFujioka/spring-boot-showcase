@@ -20,40 +20,77 @@
   },
   "packageRules": [
     {
-      "groupName": "gRPC",
-      "matchPackageNames": ["io.grpc:**", "net.devh:**"],
-      "stabilityDays": 5
+      "description": "Keep Spring Boot 3.x, do not update to 4.x",
+      "matchPackageNames": ["org.springframework.boot:**"],
+      "allowedVersions": "< 4.0.0"
     },
     {
-      "groupName": "Protobuf",
-      "matchPackageNames": ["com.google.protobuf:**"],
-      "stabilityDays": 3
+      "description": "springdoc-openapi 3.x requires Spring Boot 4.x",
+      "matchPackageNames": ["org.springdoc:**"],
+      "allowedVersions": "< 3.0.0"
     },
     {
-      "groupName": "AWS Spring Cloud",
-      "matchPackageNames": ["io.awspring.cloud:**"],
+      "groupName": "Spring Framework",
+      "matchPackageNames": [
+        "org.springframework.boot:**",
+        "org.springframework.cloud:**",
+        "io.awspring.cloud:**"
+      ],
       "stabilityDays": 7
     },
     {
+      "groupName": "gRPC and Protobuf",
+      "description": "gRPC and Protobuf must be updated together due to tight coupling",
+      "matchPackageNames": [
+        "io.grpc:**",
+        "net.devh:**",
+        "com.google.protobuf:**"
+      ],
+      "stabilityDays": 5
+    },
+    {
       "groupName": "OpenTelemetry",
-      "matchPackageNames": ["io.opentelemetry:**", "io.micrometer:**"],
+      "description": "Alpha versions may have breaking changes",
+      "matchPackageNames": ["io.opentelemetry:**"],
+      "stabilityDays": 10
+    },
+    {
+      "groupName": "Micrometer",
+      "matchPackageNames": ["io.micrometer:**"],
       "stabilityDays": 5
     },
     {
       "groupName": "Testing",
-      "matchPackageNames": ["com.intuit.karate:**", "com.tngtech.archunit:**", "net.masterthought:**"],
+      "matchPackageNames": [
+        "io.karatelabs:**",
+        "com.tngtech.archunit:**",
+        "net.masterthought:**"
+      ],
       "stabilityDays": 2
     },
     {
+      "groupName": "Jakarta APIs",
+      "matchPackageNames": ["jakarta.annotation:**"],
+      "stabilityDays": 3
+    },
+    {
       "groupName": "Documentation",
-      "matchPackageNames": ["org.springdoc:**", "io.github.pseudomuto:**"],
+      "matchPackageNames": ["io.github.pseudomuto:**"],
       "stabilityDays": 3
     },
     {
       "groupName": "Gradle Plugins",
-      "matchPackageNames": ["com.diffplug.spotless:**", "org.dddjava.jig-gradle-plugin:**", "com.google.protobuf:**"],
+      "matchPackageNames": [
+        "com.diffplug.spotless:**",
+        "org.dddjava.jig-gradle-plugin:**"
+      ],
       "matchCategories": ["gradle"],
       "stabilityDays": 2
+    },
+    {
+      "description": "Gradle Wrapper updates",
+      "matchManagers": ["gradle-wrapper"],
+      "stabilityDays": 5
     }
   ]
 }
