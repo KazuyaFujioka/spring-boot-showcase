@@ -1,4 +1,11 @@
 spring:
+  ssl:
+    bundle:
+      pem:
+        grpc-server:
+          keystore:
+            certificate: classpath:server-cert.pem
+            private-key: classpath:server-key.pem
   docker:
     compose:
       enabled: true
@@ -14,9 +21,3 @@ logging:
   level:
     com:
       example: debug
-
-grpc:
-  server:
-    security:
-      certificate-chain: classpath:server-cert.pem
-      private-key: classpath:server-key.pem
