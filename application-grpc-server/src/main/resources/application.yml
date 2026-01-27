@@ -17,7 +17,6 @@ spring:
       shutdown-grace-period: 30
       ssl:
         bundle: grpc-server
-        secure: false
   mvc:
     format:
       date: iso
