@@ -4,21 +4,40 @@ import com.example.domain.policy.ResourceNotFoundException;
 import io.grpc.Status;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.context.annotation.Bean;
+import org.springframework.grpc.server.exception.GrpcExceptionHandler;
+import org.springframework.stereotype.Component;
 
-// @GrpcAdvice
-public class GrpcExceptionAdvice {
+@Component
+class GrpcExceptionAdvice {
 
-  Logger LOG = LoggerFactory.getLogger(GrpcExceptionAdvice.class);
+  private static final Logger LOG = LoggerFactory.getLogger(GrpcExceptionAdvice.class);
 
-  //  @GrpcExceptionHandler
-  public Status notFound(ResourceNotFoundException exception) {
-    LOG.warn(exception.getMessage());
-    return Status.NOT_FOUND.withDescription(exception.getMessage()).withCause(exception);
+  @Bean
+  GrpcExceptionHandler notFound() {
+    return throwable -> {
+      if (throwable instanceof ResourceNotFoundException exception) {
+        LOG.warn(exception.getMessage());
+        return Status.NOT_FOUND
+            .withDescription(exception.getMessage())
+            .withCause(exception)
+            .asException();
+      }
+      return null;
+    };
   }
 
-  //  @GrpcExceptionHandler
-  public Status internalServerError(Exception exception) {
-    LOG.error(exception.getMessage());
-    return Status.INTERNAL.withDescription(exception.getMessage()).withCause(exception);
+  @Bean
+  GrpcExceptionHandler internalServerError() {
+    return throwable -> {
+      if (throwable instanceof Exception exception) {
+        LOG.error(exception.getMessage());
+        return Status.INTERNAL
+            .withDescription(throwable.getMessage())
+            .withCause(throwable)
+            .asException();
+      }
+      return null;
+    };
   }
 }
