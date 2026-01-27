@@ -12,12 +12,6 @@ management:
     sampling:
       probability: 1.0
 
-grpc:
-  enabled: false
-  security:
-    auth:
-      enabled: false
-
 external:
   gateway-server:
     schema: ${GATEWAY_SERVER_SCHEMA}
