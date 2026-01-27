@@ -7,9 +7,9 @@ import com.example.domain.model.Campaigns;
 import com.example.endpoint.grpc.protobuf.service.CampaignServiceGrpc;
 import com.example.endpoint.grpc.protobuf.type.Number;
 import io.grpc.stub.StreamObserver;
-import net.devh.boot.grpc.server.service.GrpcService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.grpc.server.service.GrpcService;
 
 @GrpcService(interceptors = TraceServerInterceptor.class)
 class CampaignServiceImpl extends CampaignServiceGrpc.CampaignServiceImplBase {

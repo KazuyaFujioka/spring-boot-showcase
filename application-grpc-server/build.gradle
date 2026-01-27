@@ -28,7 +28,7 @@ dependencies {
     implementation(libs.spring.boot.starter.actuator)
     implementation(libs.spring.boot.docker.compose)
 
-    implementation(libs.grpc.server.spring.boot)
+    implementation(libs.spring.grpc.spring.boot.starter)
     implementation(libs.protobuf.java.util)
 
     implementation(libs.micrometer.tracing.bridge)

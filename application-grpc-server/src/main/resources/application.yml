@@ -4,6 +4,10 @@ spring:
   threads:
     virtual:
       enabled: true
+  grpc:
+    server:
+      port: 6565
+      shutdown-grace-period: 30
   mvc:
     format:
       date: iso
@@ -48,12 +52,12 @@ management:
     sampling:
       probability: 1.0
 
-grpc:
-  server:
-    port: 6565
-    # FIXME spring cloud gatewayを使う為にはSSL/TLS設定が必須
-    security:
-      enabled: true
-      certificate-chain: ${GRPC_SECURITY_CERT_CHAIN}
-      private-key: ${GRPC_SECURITY_PRIVATE_KEY}
-    shutdown-grace-period: 30
+#grpc:
+#  server:
+#    port: 6565
+#    # FIXME spring cloud gatewayを使う為にはSSL/TLS設定が必須
+#    security:
+#      enabled: true
+#      certificate-chain: ${GRPC_SECURITY_CERT_CHAIN}
+#      private-key: ${GRPC_SECURITY_PRIVATE_KEY}
+#    shutdown-grace-period: 30
