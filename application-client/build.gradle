@@ -25,7 +25,7 @@ dependencies {
     implementation(libs.spring.boot.starter.reactor.netty)
     implementation(libs.spring.boot.starter.actuator)
 
-    implementation(libs.grpc.client.spring.boot)
+    implementation(libs.spring.grpc.client.spring.boot.starter)
 
     implementation(libs.micrometer.tracing.bridge)
     implementation(libs.opentelemetry.zipkin)
