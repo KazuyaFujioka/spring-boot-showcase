@@ -31,6 +31,9 @@ class ObservationConfiguration {
     };
   }
 
+  // Spring Bootのissue #34801: 親のObservationチェーンを辿ることで、
+  // アクチュエータエンドポイント経由で発生する子Observation（例: Spring Security）も
+  // フィルタリングし、トレースの断片化を防ぎます
   private Context getRoot(Context current) {
     ObservationView parent = current.getParentObservation();
     if (Objects.isNull(parent)) return current;

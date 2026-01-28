@@ -34,7 +34,6 @@ dependencies {
     implementation(libs.micrometer.tracing.bridge)
     implementation(libs.micrometer.prometheus)
     implementation(libs.opentelemetry.zipkin)
-    implementation(libs.opentelemetry.grpc)
 
     developmentOnly(libs.spring.boot.devtools)
 
