@@ -37,6 +37,9 @@ out/
 ### VS Code ###
 .vscode/
 
+### Git Worktrees ###
+.worktrees/
+
 /campaign-application-grpc-server/docs/proto-document.html
 /certificate/*.pem
 /certificate/*.srl
