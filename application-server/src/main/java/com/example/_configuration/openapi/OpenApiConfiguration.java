@@ -1,7 +1,5 @@
 package com.example._configuration.openapi;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import io.swagger.v3.core.jackson.ModelResolver;
 import io.swagger.v3.oas.models.Components;
 import io.swagger.v3.oas.models.OpenAPI;
 import io.swagger.v3.oas.models.info.Contact;
@@ -26,10 +24,5 @@ class OpenApiConfiguration {
         .description("キャンペーン情報をRESTで返却するAPI")
         .contact(contact)
         .version("1.0");
-  }
-
-  @Bean
-  ModelResolver modelResolver(ObjectMapper objectMapper) {
-    return new ModelResolver(objectMapper);
   }
 }
