@@ -1,6 +1,6 @@
 {
   "extends": [
-    "config:base",
+    "config:recommended",
     "group:springBoot"
   ],
   "timezone": "Asia/Tokyo",
@@ -10,54 +10,50 @@
   "prHourlyLimit": 0,
   "separateMinorPatch": true,
   "major": {
-    "stabilityDays": 7
+    "minimumReleaseAge": "7 days"
   },
   "minor": {
-    "stabilityDays": 3
+    "minimumReleaseAge": "3 days"
   },
   "patch": {
-    "stabilityDays": 2
+    "minimumReleaseAge": "2 days"
   },
   "packageRules": [
-    {
-      "description": "Keep Spring Boot 3.x, do not update to 4.x",
-      "matchPackageNames": ["org.springframework.boot:**"],
-      "allowedVersions": "< 4.0.0"
-    },
-    {
-      "description": "springdoc-openapi 3.x requires Spring Boot 4.x",
-      "matchPackageNames": ["org.springdoc:**"],
-      "allowedVersions": "< 3.0.0"
-    },
     {
       "groupName": "Spring Framework",
       "matchPackageNames": [
         "org.springframework.boot:**",
         "org.springframework.cloud:**",
+        "org.springframework.grpc:**",
         "io.awspring.cloud:**"
       ],
-      "stabilityDays": 7
+      "minimumReleaseAge": "7 days"
     },
     {
       "groupName": "gRPC and Protobuf",
-      "description": "gRPC and Protobuf must be updated together due to tight coupling",
+      "description": "gRPC and Protobuf must be updated together. Keep protobuf 3.x for gRPC compatibility.",
       "matchPackageNames": [
         "io.grpc:**",
-        "net.devh:**",
-        "com.google.protobuf:**"
+        "net.devh:**"
       ],
-      "stabilityDays": 5
+      "minimumReleaseAge": "5 days"
+    },
+    {
+      "description": "Keep Protobuf 3.x for gRPC 1.x compatibility, do not update to 4.x",
+      "matchPackageNames": ["com.google.protobuf:**"],
+      "allowedVersions": "< 4.0.0",
+      "minimumReleaseAge": "5 days"
     },
     {
       "groupName": "OpenTelemetry",
       "description": "Alpha versions may have breaking changes",
       "matchPackageNames": ["io.opentelemetry:**"],
-      "stabilityDays": 10
+      "minimumReleaseAge": "10 days"
     },
     {
       "groupName": "Micrometer",
       "matchPackageNames": ["io.micrometer:**"],
-      "stabilityDays": 5
+      "minimumReleaseAge": "5 days"
     },
     {
       "groupName": "Testing",
@@ -66,17 +62,17 @@
         "com.tngtech.archunit:**",
         "net.masterthought:**"
       ],
-      "stabilityDays": 2
+      "minimumReleaseAge": "2 days"
     },
     {
       "groupName": "Jakarta APIs",
       "matchPackageNames": ["jakarta.annotation:**"],
-      "stabilityDays": 3
+      "minimumReleaseAge": "3 days"
     },
     {
       "groupName": "Documentation",
       "matchPackageNames": ["io.github.pseudomuto:**"],
-      "stabilityDays": 3
+      "minimumReleaseAge": "3 days"
     },
     {
       "groupName": "Gradle Plugins",
@@ -85,12 +81,12 @@
         "org.dddjava.jig-gradle-plugin:**"
       ],
       "matchCategories": ["gradle"],
-      "stabilityDays": 2
+      "minimumReleaseAge": "2 days"
     },
     {
       "description": "Gradle Wrapper updates",
       "matchManagers": ["gradle-wrapper"],
-      "stabilityDays": 5
+      "minimumReleaseAge": "5 days"
     }
   ]
 }
