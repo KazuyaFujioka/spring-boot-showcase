@@ -1,7 +1,7 @@
 plugins {
     id "idea"
     id "java"
-    alias(libs.plugins.spring.boot4)
+    alias(libs.plugins.spring.boot)
     alias(libs.plugins.spring.dependency.management)
     alias(libs.plugins.springdoc.openapi)
     alias(libs.plugins.spotless)
@@ -35,7 +35,7 @@ dependencies {
     implementation(libs.micrometer.prometheus)
     implementation(libs.opentelemetry.exporter.zipkin)
 
-    implementation(libs.springdoc.openapi3)
+    implementation(libs.springdoc.openapi)
 
     developmentOnly(libs.spring.boot.devtools)
 
