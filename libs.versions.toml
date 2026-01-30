@@ -6,6 +6,7 @@ grpc = "1.78.0"
 spring-grpc4 = "1.0.2"
 spring-grpc = "0.12.0"
 protobuf = "3.25.8"
+protobuf4 = "4.33.4"
 
 [libraries]
 spring-boot-starter = { module = "org.springframework.boot:spring-boot-starter" }
@@ -31,7 +32,7 @@ grpc-stub = { module = "io.grpc:grpc-stub", version.ref = "grpc" }
 grpc-protoc-gen = { module = "io.grpc:protoc-gen-grpc-java", version.ref = "grpc" }
 
 protobuf-protoc = { module = "com.google.protobuf:protoc", version.ref = "protobuf" }
-protobuf-java-util = { module = "com.google.protobuf:protobuf-java-util", version.ref = "protobuf" }
+protobuf-java-util = { module = "com.google.protobuf:protobuf-java-util", version.ref = "protobuf4" }
 
 jakarta-annotation-api = { module = "jakarta.annotation:jakarta.annotation-api", version = "3.0.0" }
 
@@ -61,5 +62,5 @@ spring-boot4 = { id = "org.springframework.boot", version.ref = "spring-boot4" }
 spring-dependency-management = { id = "io.spring.dependency-management", version = "1.1.7" }
 protobuf = { id = "com.google.protobuf", version = "0.9.6" }
 springdoc-openapi = { id = "org.springdoc.openapi-gradle-plugin", version = "1.9.0" }
-spotless = { id = "com.diffplug.spotless", version = "8.2.0" }
+spotless = { id = "com.diffplug.spotless", version = "8.2.1" }
 jig = { id = "org.dddjava.jig-gradle-plugin", version = "2025.12.1" }
