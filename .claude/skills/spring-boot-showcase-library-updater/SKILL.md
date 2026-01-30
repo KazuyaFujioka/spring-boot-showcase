@@ -1,6 +1,6 @@
 ---
 name: spring-boot-showcase-library-updater
-description: Spring Boot Showcaseプロジェクト専用のライブラリ更新スキル。プロジェクトの制約（Spring Boot 3系維持、依存関係の考慮）を守りながら、ライブラリを最新化する。使用タイミング：(1)「ライブラリを最新化してください」「依存関係を更新してください」などのライブラリ更新要求時、(2) Spring Boot Showcaseプロジェクト内での作業時、(3) libs.versions.tomlの更新が必要な時。このスキルは/Users/kazuya.fujioka/Workingspace/sandbox/spring-boot-showcaseディレクトリでのみ使用する。
+description: Spring Boot Showcaseプロジェクト専用のライブラリ更新スキル。プロジェクトの制約（Spring Boot 4系維持、依存関係の考慮、Protobuf 3系維持）を守りながら、ライブラリを最新化する。使用タイミング：(1)「ライブラリを最新化してください」「依存関係を更新してください」などのライブラリ更新要求時、(2) Spring Boot Showcaseプロジェクト内での作業時、(3) libs.versions.tomlの更新が必要な時。このスキルは/Users/kazuya.fujioka/Workingspace/sandbox/spring-boot-showcaseディレクトリでのみ使用する。
 ---
 
 # Spring Boot Showcase Library Updater
@@ -10,7 +10,8 @@ description: Spring Boot Showcaseプロジェクト専用のライブラリ更�
 ## 重要な制約
 
 作業前に必ず [constraints.md](references/constraints.md) を確認してください：
-- Spring Boot 3系を維持（4系には更新しない）
+- Spring Boot 4系を維持（5系には更新しない）
+- Protobuf 3系を維持（4系には更新しない - gRPC 1.x系との互換性のため）
 - 依存関係のあるライブラリは慎重に更新
 - 各更新後に必ずテストを実行
 
@@ -149,8 +150,8 @@ git push -u origin feature/update-libraries-[カテゴリ]
 gh pr create --title "ライブラリを最新化" --body "$(cat <<'EOF'
 ## 概要
 
-Spring Boot 3系の最新版を維持しながら、利用しているライブラリを最新化しました。
-Spring Boot 4系への更新は行わず、3.x系を維持しています。
+Spring Boot 4系を維持しながら、利用しているライブラリを最新化しました。
+Protobuf 3系を維持（gRPC 1.x系との互換性のため）しています。
 
 ## 更新内容（N個）
 
@@ -197,7 +198,8 @@ GitHub UIでのPR作成をユーザーに案内し、上記の本文テンプレ
 ### 更新を見送る判断
 
 以下の場合は更新を見送り、理由を記録：
-- Spring Boot 4系が必要
+- Spring Boot 5系が必要
+- Protobuf 4系が必要（gRPC 1.x系との互換性問題）
 - 依存関係で互換性がない
 - テストが失敗し、修正が困難
 - alpha/beta版で破壊的変更がある

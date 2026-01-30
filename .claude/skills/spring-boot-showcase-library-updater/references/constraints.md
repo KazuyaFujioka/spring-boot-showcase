@@ -6,10 +6,10 @@
 
 ### Spring Boot
 
-- **現在のバージョン**: 3.x系
-- **制約**: Spring Boot 4系には更新しない
-- **理由**: プロジェクトの方針としてSpring Boot 3系を維持する
-- **更新範囲**: 3.x系の最新パッチ・マイナーバージョンまで
+- **現在のバージョン**: 4.x系
+- **制約**: Spring Boot 5系には更新しない
+- **理由**: プロジェクトの方針としてSpring Boot 4系を維持する
+- **更新範囲**: 4.x系の最新パッチ・マイナーバージョンまで
 
 ### 依存関係のある更新
 
@@ -19,14 +19,16 @@
 
 - **gRPC**: 特定のProtobufバージョンに依存
 - **Protobuf**: gRPCの要求バージョンに合わせる必要がある
+- **制約**: Protobuf 3.x系を維持（4.x系は非互換）
 - **確認方法**: Maven CentralでgRPCの依存関係を確認
 - **例**: gRPC 1.78.0はProtobuf 3.25.8を要求（4.xは非互換）
+- **gRPC OpenTelemetry**: `io.grpc:grpc-opentelemetry`を使用（追加の依存関係が必要）
 
 #### Spring Boot と関連ライブラリ
 
 - **springdoc-openapi**: Spring Bootのメジャーバージョンに対応
   - Spring Boot 3.x → springdoc-openapi 2.x
-  - Spring Boot 4.x → springdoc-openapi 3.x
+  - Spring Boot 4.x → springdoc-openapi 3.x（現在のバージョン）
 
 #### OpenTelemetry
 
