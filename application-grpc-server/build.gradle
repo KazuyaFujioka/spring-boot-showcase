@@ -26,6 +26,9 @@ dependencies {
 
     implementation(libs.spring.boot.starter.web)
     implementation(libs.spring.boot.starter.actuator)
+    implementation(libs.spring.boot.starter.opentelemetry)
+
+    implementation(libs.spring.boot.zipkin)
     implementation(libs.spring.boot.docker.compose)
 
     implementation(libs.spring.grpc.spring.boot.starter)
@@ -33,7 +36,7 @@ dependencies {
 
     implementation(libs.micrometer.tracing.bridge)
     implementation(libs.micrometer.prometheus)
-    implementation(libs.opentelemetry.zipkin)
+    implementation(libs.opentelemetry.exporter.zipkin)
 
     developmentOnly(libs.spring.boot.devtools)
 

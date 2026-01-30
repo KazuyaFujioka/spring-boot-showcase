@@ -24,12 +24,17 @@ dependencies {
     implementation(libs.spring.boot.starter.web)
     implementation(libs.spring.boot.starter.reactor.netty)
     implementation(libs.spring.boot.starter.actuator)
+    implementation(libs.spring.boot.starter.opentelemetry)
+
+    implementation(libs.spring.boot.restclient)
+    implementation(libs.spring.boot.zipkin)
 
     implementation(libs.spring.grpc.client.spring.boot.starter)
 
     implementation(libs.micrometer.tracing.bridge)
-    implementation(libs.opentelemetry.zipkin)
     implementation(libs.opentelemetry.grpc)
+    implementation(libs.micrometer.prometheus)
+    implementation(libs.opentelemetry.exporter.zipkin)
 
     developmentOnly(libs.spring.boot.devtools)
 

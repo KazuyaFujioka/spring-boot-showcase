@@ -1,9 +1,8 @@
 [versions]
-spring-boot = "3.5.10"
-spring-cloud = "2025.0.1"
+spring-boot = "4.0.2"
+spring-cloud = "2025.1.1"
 grpc = "1.78.0"
-grpc-spring-boot = "3.1.0.RELEASE"
-spring-grpc = "0.12.0"
+spring-grpc = "1.0.2"
 protobuf = "3.25.8"
 
 [libraries]
@@ -12,7 +11,11 @@ spring-boot-starter-web = { module = "org.springframework.boot:spring-boot-start
 spring-boot-starter-reactor-netty = { module = "org.springframework.boot:spring-boot-starter-reactor-netty" }
 spring-boot-starter-json = { module = "org.springframework.boot:spring-boot-starter-json" }
 spring-boot-starter-actuator = { module = "org.springframework.boot:spring-boot-starter-actuator" }
+spring-boot-starter-opentelemetry = { module = "org.springframework.boot:spring-boot-starter-opentelemetry" }
 spring-boot-starter-test = { module = "org.springframework.boot:spring-boot-starter-test" }
+
+spring-boot-restclient = { module = "org.springframework.boot:spring-boot-restclient" }
+spring-boot-zipkin = { module = "org.springframework.boot:spring-boot-zipkin" }
 
 spring-boot-devtools = { module = "org.springframework.boot:spring-boot-devtools" }
 spring-boot-docker-compose = { module = "org.springframework.boot:spring-boot-docker-compose" }
@@ -36,10 +39,10 @@ aws-spring-cloud-s3 = { module = "io.awspring.cloud:spring-cloud-aws-starter-s3"
 micrometer-tracing-bridge = { module = "io.micrometer:micrometer-tracing-bridge-otel" }
 micrometer-prometheus = { module = "io.micrometer:micrometer-registry-prometheus" }
 
-opentelemetry-zipkin = { module = "io.opentelemetry:opentelemetry-exporter-zipkin" }
-opentelemetry-grpc = { module = "io.opentelemetry.instrumentation:opentelemetry-grpc-1.6", version = "2.23.0-alpha" }
+opentelemetry-exporter-zipkin = { module = "io.opentelemetry:opentelemetry-exporter-zipkin" }
+opentelemetry-grpc = { module = "io.opentelemetry.instrumentation:opentelemetry-grpc-1.6", version = "2.24.0-alpha" }
 
-springdoc-openapi = { module = "org.springdoc:springdoc-openapi-starter-webmvc-ui", version = "2.8.15" }
+springdoc-openapi = { module = "org.springdoc:springdoc-openapi-starter-webmvc-ui", version = "3.0.1" }
 protoc-gen-doc = { module = "io.github.pseudomuto:protoc-gen-doc", version = "1.5.1" }
 
 karate = { module = "io.karatelabs:karate-junit5", version = "1.5.2" }
@@ -54,5 +57,5 @@ spring-boot = { id = "org.springframework.boot", version.ref = "spring-boot" }
 spring-dependency-management = { id = "io.spring.dependency-management", version = "1.1.7" }
 protobuf = { id = "com.google.protobuf", version = "0.9.6" }
 springdoc-openapi = { id = "org.springdoc.openapi-gradle-plugin", version = "1.9.0" }
-spotless = { id = "com.diffplug.spotless", version = "8.2.0" }
+spotless = { id = "com.diffplug.spotless", version = "8.2.1" }
 jig = { id = "org.dddjava.jig-gradle-plugin", version = "2025.12.1" }
