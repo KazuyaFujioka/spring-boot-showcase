@@ -1,7 +1,7 @@
 plugins {
     id "idea"
     id "java"
-    alias(libs.plugins.spring.boot)
+    alias(libs.plugins.spring.boot4)
     alias(libs.plugins.spring.dependency.management)
     alias(libs.plugins.spotless)
 }
@@ -21,11 +21,14 @@ repositories {
 dependencies {
     implementation(libs.spring.cloud.starter.gateway)
     implementation(libs.spring.boot.starter.actuator)
+    implementation(libs.spring.boot.starter.opentelemetry)
+
+    implementation(libs.spring.boot.zipkin)
     implementation(libs.spring.boot.docker.compose)
 
     implementation(libs.micrometer.tracing.bridge)
     implementation(libs.micrometer.prometheus)
-    implementation(libs.opentelemetry.zipkin)
+    implementation(libs.opentelemetry.exporter.zipkin)
 
     implementation platform(libs.spring.cloud.dependencies)
 
