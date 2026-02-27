@@ -1,7 +1,7 @@
 [versions]
 spring-boot = "4.0.2"
 spring-cloud = "2025.1.1"
-grpc = "1.78.0"
+grpc = "1.79.0"
 spring-grpc = "1.0.2"
 protobuf = "3.25.8"
 
