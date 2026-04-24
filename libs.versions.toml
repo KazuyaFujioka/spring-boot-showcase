@@ -47,7 +47,7 @@ protoc-gen-doc = { module = "io.github.pseudomuto:protoc-gen-doc", version = "1.
 
 karate = { module = "io.karatelabs:karate-junit5", version = "1.5.2" }
 cucumber-reporting = { module = "net.masterthought:cucumber-reporting", version = "5.10.2" }
-archunit = { module="com.tngtech.archunit:archunit-junit5", version="1.4.1" }
+archunit = { module="com.tngtech.archunit:archunit-junit5", version="1.4.2" }
 
 [bundles]
 grpc = [ "grpc-protobuf", "grpc-stub" ]
